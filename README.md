@@ -1,5 +1,5 @@
-**#Kasza Zoltan**
+**Kasza Zoltan**
 
-**##Links**<br>
+**Links**<br>
 [Github] (http://github.com/Zoznyak)<br>
 :rocket:
