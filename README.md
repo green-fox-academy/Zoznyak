@@ -1,4 +1,4 @@
-#Kasza Zoltan
+**#Kasza Zoltan**
 
-##Links
-[Github] (http://github.com/green-fox-academy/Zoznyak
+**##Links**
+[Github] (http://github.com/Zoznyak)
