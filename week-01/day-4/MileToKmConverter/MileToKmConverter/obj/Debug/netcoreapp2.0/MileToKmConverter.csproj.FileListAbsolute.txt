@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\obj\Debug\netcoreapp2.0\MileToKmConverter.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\obj\Debug\netcoreapp2.0\MileToKmConverter.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\obj\Debug\netcoreapp2.0\MileToKmConverter.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\obj\Debug\netcoreapp2.0\MileToKmConverter.AssemblyInfo.cs
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\bin\Debug\netcoreapp2.0\MileToKmConverter.deps.json
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\bin\Debug\netcoreapp2.0\MileToKmConverter.runtimeconfig.json
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\bin\Debug\netcoreapp2.0\MileToKmConverter.runtimeconfig.dev.json
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\bin\Debug\netcoreapp2.0\MileToKmConverter.dll
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\bin\Debug\netcoreapp2.0\MileToKmConverter.pdb
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\obj\Debug\netcoreapp2.0\MileToKmConverter.dll
+C:\Users\HP\source\repos\MileToKmConverter\MileToKmConverter\obj\Debug\netcoreapp2.0\MileToKmConverter.pdb

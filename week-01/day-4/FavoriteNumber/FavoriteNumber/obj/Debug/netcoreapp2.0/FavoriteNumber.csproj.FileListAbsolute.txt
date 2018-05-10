@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\bin\Debug\netcoreapp2.0\FavoriteNumber.deps.json
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\bin\Debug\netcoreapp2.0\FavoriteNumber.runtimeconfig.json
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\bin\Debug\netcoreapp2.0\FavoriteNumber.runtimeconfig.dev.json
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\bin\Debug\netcoreapp2.0\FavoriteNumber.dll
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\bin\Debug\netcoreapp2.0\FavoriteNumber.pdb
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\obj\Debug\netcoreapp2.0\FavoriteNumber.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\obj\Debug\netcoreapp2.0\FavoriteNumber.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\obj\Debug\netcoreapp2.0\FavoriteNumber.AssemblyInfo.cs
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\obj\Debug\netcoreapp2.0\FavoriteNumber.dll
+C:\Users\HP\source\repos\FavoriteNumber\FavoriteNumber\obj\Debug\netcoreapp2.0\FavoriteNumber.pdb

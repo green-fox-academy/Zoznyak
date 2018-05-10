@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\Cuboid\Cuboid\obj\Debug\netcoreapp2.0\Cuboid.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\Cuboid\Cuboid\obj\Debug\netcoreapp2.0\Cuboid.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\Cuboid\Cuboid\obj\Debug\netcoreapp2.0\Cuboid.AssemblyInfo.cs
+C:\Users\HP\source\repos\Cuboid\Cuboid\bin\Debug\netcoreapp2.0\Cuboid.deps.json
+C:\Users\HP\source\repos\Cuboid\Cuboid\bin\Debug\netcoreapp2.0\Cuboid.runtimeconfig.json
+C:\Users\HP\source\repos\Cuboid\Cuboid\bin\Debug\netcoreapp2.0\Cuboid.runtimeconfig.dev.json
+C:\Users\HP\source\repos\Cuboid\Cuboid\bin\Debug\netcoreapp2.0\Cuboid.dll
+C:\Users\HP\source\repos\Cuboid\Cuboid\bin\Debug\netcoreapp2.0\Cuboid.pdb
+C:\Users\HP\source\repos\Cuboid\Cuboid\obj\Debug\netcoreapp2.0\Cuboid.dll
+C:\Users\HP\source\repos\Cuboid\Cuboid\obj\Debug\netcoreapp2.0\Cuboid.pdb
+C:\Users\HP\source\repos\Cuboid\Cuboid\obj\Debug\netcoreapp2.0\Cuboid.csprojAssemblyReference.cache

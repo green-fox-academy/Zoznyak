@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\bin\Debug\netcoreapp2.0\AvarageOfInput.deps.json
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\bin\Debug\netcoreapp2.0\AvarageOfInput.runtimeconfig.json
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\bin\Debug\netcoreapp2.0\AvarageOfInput.runtimeconfig.dev.json
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\bin\Debug\netcoreapp2.0\AvarageOfInput.dll
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\bin\Debug\netcoreapp2.0\AvarageOfInput.pdb
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\obj\Debug\netcoreapp2.0\AvarageOfInput.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\obj\Debug\netcoreapp2.0\AvarageOfInput.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\obj\Debug\netcoreapp2.0\AvarageOfInput.AssemblyInfo.cs
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\obj\Debug\netcoreapp2.0\AvarageOfInput.dll
+C:\Users\HP\source\repos\AvarageOfInput\AvarageOfInput\obj\Debug\netcoreapp2.0\AvarageOfInput.pdb

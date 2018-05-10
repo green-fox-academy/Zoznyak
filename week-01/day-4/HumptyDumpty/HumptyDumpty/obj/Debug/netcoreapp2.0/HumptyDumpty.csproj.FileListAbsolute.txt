@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\bin\Debug\netcoreapp2.0\HumptyDumpty.deps.json
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\bin\Debug\netcoreapp2.0\HumptyDumpty.runtimeconfig.json
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\bin\Debug\netcoreapp2.0\HumptyDumpty.runtimeconfig.dev.json
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\bin\Debug\netcoreapp2.0\HumptyDumpty.dll
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\bin\Debug\netcoreapp2.0\HumptyDumpty.pdb
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\obj\Debug\netcoreapp2.0\HumptyDumpty.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\obj\Debug\netcoreapp2.0\HumptyDumpty.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\obj\Debug\netcoreapp2.0\HumptyDumpty.AssemblyInfo.cs
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\obj\Debug\netcoreapp2.0\HumptyDumpty.dll
+C:\Users\HP\source\repos\HumptyDumpty\HumptyDumpty\obj\Debug\netcoreapp2.0\HumptyDumpty.pdb

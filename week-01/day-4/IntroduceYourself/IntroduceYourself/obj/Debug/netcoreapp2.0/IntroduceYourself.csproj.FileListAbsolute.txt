@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\bin\Debug\netcoreapp2.0\IntroduceYourself.deps.json
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\bin\Debug\netcoreapp2.0\IntroduceYourself.runtimeconfig.json
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\bin\Debug\netcoreapp2.0\IntroduceYourself.runtimeconfig.dev.json
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\bin\Debug\netcoreapp2.0\IntroduceYourself.dll
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\bin\Debug\netcoreapp2.0\IntroduceYourself.pdb
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\obj\Debug\netcoreapp2.0\IntroduceYourself.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\obj\Debug\netcoreapp2.0\IntroduceYourself.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\obj\Debug\netcoreapp2.0\IntroduceYourself.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\obj\Debug\netcoreapp2.0\IntroduceYourself.AssemblyInfo.cs
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\obj\Debug\netcoreapp2.0\IntroduceYourself.dll
+C:\Users\HP\source\repos\IntroduceYourself\IntroduceYourself\obj\Debug\netcoreapp2.0\IntroduceYourself.pdb

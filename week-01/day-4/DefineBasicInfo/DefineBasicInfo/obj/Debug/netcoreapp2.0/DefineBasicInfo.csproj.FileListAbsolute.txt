@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\obj\Debug\netcoreapp2.0\DefineBasicInfo.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\obj\Debug\netcoreapp2.0\DefineBasicInfo.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\obj\Debug\netcoreapp2.0\DefineBasicInfo.AssemblyInfo.cs
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\bin\Debug\netcoreapp2.0\DefineBasicInfo.deps.json
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\bin\Debug\netcoreapp2.0\DefineBasicInfo.runtimeconfig.json
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\bin\Debug\netcoreapp2.0\DefineBasicInfo.runtimeconfig.dev.json
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\bin\Debug\netcoreapp2.0\DefineBasicInfo.dll
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\bin\Debug\netcoreapp2.0\DefineBasicInfo.pdb
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\obj\Debug\netcoreapp2.0\DefineBasicInfo.dll
+C:\Users\HP\source\repos\DefineBasicInfo\DefineBasicInfo\obj\Debug\netcoreapp2.0\DefineBasicInfo.pdb

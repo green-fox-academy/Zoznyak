@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\bin\Debug\netcoreapp2.0\SecondsInADay.deps.json
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\bin\Debug\netcoreapp2.0\SecondsInADay.runtimeconfig.json
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\bin\Debug\netcoreapp2.0\SecondsInADay.runtimeconfig.dev.json
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\bin\Debug\netcoreapp2.0\SecondsInADay.dll
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\bin\Debug\netcoreapp2.0\SecondsInADay.pdb
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\obj\Debug\netcoreapp2.0\SecondsInADay.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\obj\Debug\netcoreapp2.0\SecondsInADay.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\obj\Debug\netcoreapp2.0\SecondsInADay.AssemblyInfo.cs
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\obj\Debug\netcoreapp2.0\SecondsInADay.dll
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\obj\Debug\netcoreapp2.0\SecondsInADay.pdb
+C:\Users\HP\source\repos\SecondsInADay\SecondsInADay\obj\Debug\netcoreapp2.0\SecondsInADay.csprojAssemblyReference.cache

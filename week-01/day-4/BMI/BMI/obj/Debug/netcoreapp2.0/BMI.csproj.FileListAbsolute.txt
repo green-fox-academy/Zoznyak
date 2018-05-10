@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\BMI\BMI\obj\Debug\netcoreapp2.0\BMI.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\BMI\BMI\obj\Debug\netcoreapp2.0\BMI.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\BMI\BMI\obj\Debug\netcoreapp2.0\BMI.AssemblyInfo.cs
+C:\Users\HP\source\repos\BMI\BMI\bin\Debug\netcoreapp2.0\BMI.deps.json
+C:\Users\HP\source\repos\BMI\BMI\bin\Debug\netcoreapp2.0\BMI.runtimeconfig.json
+C:\Users\HP\source\repos\BMI\BMI\bin\Debug\netcoreapp2.0\BMI.runtimeconfig.dev.json
+C:\Users\HP\source\repos\BMI\BMI\bin\Debug\netcoreapp2.0\BMI.dll
+C:\Users\HP\source\repos\BMI\BMI\bin\Debug\netcoreapp2.0\BMI.pdb
+C:\Users\HP\source\repos\BMI\BMI\obj\Debug\netcoreapp2.0\BMI.dll
+C:\Users\HP\source\repos\BMI\BMI\obj\Debug\netcoreapp2.0\BMI.pdb

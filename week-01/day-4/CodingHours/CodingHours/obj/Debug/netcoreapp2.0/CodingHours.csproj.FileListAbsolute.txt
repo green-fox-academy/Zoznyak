@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\CodingHours\CodingHours\bin\Debug\netcoreapp2.0\CodingHours.deps.json
+C:\Users\HP\source\repos\CodingHours\CodingHours\bin\Debug\netcoreapp2.0\CodingHours.runtimeconfig.json
+C:\Users\HP\source\repos\CodingHours\CodingHours\bin\Debug\netcoreapp2.0\CodingHours.runtimeconfig.dev.json
+C:\Users\HP\source\repos\CodingHours\CodingHours\bin\Debug\netcoreapp2.0\CodingHours.dll
+C:\Users\HP\source\repos\CodingHours\CodingHours\bin\Debug\netcoreapp2.0\CodingHours.pdb
+C:\Users\HP\source\repos\CodingHours\CodingHours\obj\Debug\netcoreapp2.0\CodingHours.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\CodingHours\CodingHours\obj\Debug\netcoreapp2.0\CodingHours.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\CodingHours\CodingHours\obj\Debug\netcoreapp2.0\CodingHours.AssemblyInfo.cs
+C:\Users\HP\source\repos\CodingHours\CodingHours\obj\Debug\netcoreapp2.0\CodingHours.dll
+C:\Users\HP\source\repos\CodingHours\CodingHours\obj\Debug\netcoreapp2.0\CodingHours.pdb
