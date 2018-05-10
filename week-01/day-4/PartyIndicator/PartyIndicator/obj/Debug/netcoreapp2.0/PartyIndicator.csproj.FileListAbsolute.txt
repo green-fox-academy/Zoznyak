@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\bin\Debug\netcoreapp2.0\PartyIndicator.deps.json
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\bin\Debug\netcoreapp2.0\PartyIndicator.runtimeconfig.json
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\bin\Debug\netcoreapp2.0\PartyIndicator.runtimeconfig.dev.json
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\bin\Debug\netcoreapp2.0\PartyIndicator.dll
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\bin\Debug\netcoreapp2.0\PartyIndicator.pdb
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\obj\Debug\netcoreapp2.0\PartyIndicator.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\obj\Debug\netcoreapp2.0\PartyIndicator.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\obj\Debug\netcoreapp2.0\PartyIndicator.AssemblyInfo.cs
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\obj\Debug\netcoreapp2.0\PartyIndicator.dll
+C:\Users\HP\source\repos\PartyIndicator\PartyIndicator\obj\Debug\netcoreapp2.0\PartyIndicator.pdb

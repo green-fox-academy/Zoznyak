@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\OddEven\OddEven\obj\Debug\netcoreapp2.0\OddEven.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\OddEven\OddEven\obj\Debug\netcoreapp2.0\OddEven.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\OddEven\OddEven\obj\Debug\netcoreapp2.0\OddEven.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\OddEven\OddEven\obj\Debug\netcoreapp2.0\OddEven.AssemblyInfo.cs
+C:\Users\HP\source\repos\OddEven\OddEven\bin\Debug\netcoreapp2.0\OddEven.deps.json
+C:\Users\HP\source\repos\OddEven\OddEven\bin\Debug\netcoreapp2.0\OddEven.runtimeconfig.json
+C:\Users\HP\source\repos\OddEven\OddEven\bin\Debug\netcoreapp2.0\OddEven.runtimeconfig.dev.json
+C:\Users\HP\source\repos\OddEven\OddEven\bin\Debug\netcoreapp2.0\OddEven.dll
+C:\Users\HP\source\repos\OddEven\OddEven\bin\Debug\netcoreapp2.0\OddEven.pdb
+C:\Users\HP\source\repos\OddEven\OddEven\obj\Debug\netcoreapp2.0\OddEven.dll
+C:\Users\HP\source\repos\OddEven\OddEven\obj\Debug\netcoreapp2.0\OddEven.pdb

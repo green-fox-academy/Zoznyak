@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\obj\Debug\netcoreapp2.0\OneTwoALot.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\obj\Debug\netcoreapp2.0\OneTwoALot.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\obj\Debug\netcoreapp2.0\OneTwoALot.AssemblyInfo.cs
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\obj\Debug\netcoreapp2.0\OneTwoALot.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\bin\Debug\netcoreapp2.0\OneTwoALot.deps.json
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\bin\Debug\netcoreapp2.0\OneTwoALot.runtimeconfig.json
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\bin\Debug\netcoreapp2.0\OneTwoALot.runtimeconfig.dev.json
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\bin\Debug\netcoreapp2.0\OneTwoALot.dll
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\bin\Debug\netcoreapp2.0\OneTwoALot.pdb
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\obj\Debug\netcoreapp2.0\OneTwoALot.dll
+C:\Users\HP\source\repos\OneTwoALot\OneTwoALot\obj\Debug\netcoreapp2.0\OneTwoALot.pdb

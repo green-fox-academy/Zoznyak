@@ -1,0 +1,11 @@
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\bin\Debug\netcoreapp2.0\VariableMutation.deps.json
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\bin\Debug\netcoreapp2.0\VariableMutation.runtimeconfig.json
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\bin\Debug\netcoreapp2.0\VariableMutation.runtimeconfig.dev.json
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\bin\Debug\netcoreapp2.0\VariableMutation.dll
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\bin\Debug\netcoreapp2.0\VariableMutation.pdb
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\obj\Debug\netcoreapp2.0\VariableMutation.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\obj\Debug\netcoreapp2.0\VariableMutation.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\obj\Debug\netcoreapp2.0\VariableMutation.AssemblyInfo.cs
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\obj\Debug\netcoreapp2.0\VariableMutation.dll
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\obj\Debug\netcoreapp2.0\VariableMutation.pdb
+C:\Users\HP\source\repos\VariableMutation\VariableMutation\obj\Debug\netcoreapp2.0\VariableMutation.csprojAssemblyReference.cache
