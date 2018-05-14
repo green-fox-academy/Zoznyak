@@ -6,13 +6,10 @@ namespace SumElements
     {
         static void Main(string[] args)
         {
-            int[] r = { 54, 23, 66, 12 };
-            Console.WriteLine(Sum(r));
+            int[] s = { 1, 2, 3, 8, 5, 6 };
+            s[3] = 4;
+            Console.WriteLine(s[3]);
             Console.ReadLine();
-        }
-        public static int Sum(int [] arrayOne)
-        {
-            return arrayOne[1] + arrayOne[2];
         }
     }
 }
