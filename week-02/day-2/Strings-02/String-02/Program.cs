@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace List_02
+namespace String_02
 {
     class Program
     {
