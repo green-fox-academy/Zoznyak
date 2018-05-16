@@ -19,7 +19,6 @@ namespace Logs
             Console.ReadLine();
         }
 
-
         public static string[] UniqueIPs(string file1)
         {
             StreamReader reader = new StreamReader(file1);
