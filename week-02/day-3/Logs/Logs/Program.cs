@@ -23,7 +23,7 @@ namespace Logs
         {
             StreamReader reader = new StreamReader(file1);
             List<string> listOfUniqs = new List<string>();
-            int index = 0;
+            //int index = 0; //number of the uniq IPs
             string line = " ";
             while (line != null)
             {
@@ -33,7 +33,7 @@ namespace Logs
                     if (listOfUniqs.Contains(line.Substring(27, 11)) != true) 
                     {
                         listOfUniqs.Add(line.Substring(27,11));
-                        index += 1;
+                        //index += 1; //number of the uniq IPs
                     }
                 }             
             }
