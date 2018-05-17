@@ -18,7 +18,6 @@ namespace LineInTheMiddle
             var startPoint = new Point(canvas.Width/2, 0);
             var endPoint = new Point(canvas.Width/2, canvas.Height);
             foxDraw.DrawLine(startPoint, endPoint);
-
         }
     }
 
