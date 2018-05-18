@@ -6,7 +6,6 @@ using FoxDrawNameSpace;
 
 namespace Triangles
 {
-
     public partial class MainWindow : Window
     {
         FoxDraw foxDraw;
@@ -46,5 +45,4 @@ namespace Triangles
             foxDraw.DrawPolygon(points);
         }
     }
-
 }
