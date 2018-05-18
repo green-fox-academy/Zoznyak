@@ -14,10 +14,23 @@ namespace Triangles
         {
             InitializeComponent();
             foxDraw = new FoxDraw(canvas);
-            var startPoint = new Point(200, 50);
-            double sizeOfTheTriangle = 40;
+            var startPoint = new Point(400, 10);
+            Point startPointTemp;
+            double sizeOfTheTriangle = 20;
+            double heightOfTriangle = Math.Sqrt(Math.Pow(sizeOfTheTriangle, 2) - Math.Pow(sizeOfTheTriangle/2, 2));
+            int numberOfLines = 20;
 
-            DrawOneTrianle(startPoint, sizeOfTheTriangle);
+            for (int i = 1; i <= numberOfLines; i++)
+            {
+                startPointTemp = startPoint;
+                for (int j = 1; j <= i ; j++)
+                {
+                    DrawOneTrianle(startPointTemp, sizeOfTheTriangle);
+                    startPointTemp.X += sizeOfTheTriangle;
+                }
+                startPoint.X -= sizeOfTheTriangle/2;
+                startPoint.Y += heightOfTriangle;
+            }
         }
 
         private void DrawOneTrianle(Point startPoint, double sizeOfTriangle)
@@ -28,6 +41,7 @@ namespace Triangles
             points.Add(new Point(startPoint.X, startPoint.Y));
             points.Add(new Point(startPoint.X + halfOfSide, startPoint.Y + heightOfTriangle));
             points.Add(new Point(startPoint.X - halfOfSide, startPoint.Y + heightOfTriangle));
+            foxDraw.StrokeColor(Colors.Red);
             foxDraw.FillColor(Colors.Transparent);
             foxDraw.DrawPolygon(points);
         }
