@@ -8,10 +8,11 @@ namespace TeacherStudent
         {
             Student studentOne = new Student("Moricka");
             Student studentTwo = new Student("Jozsika");
-            Teacher teacher = new Teacher("Juli neni");
+            Teacher teacherOne = new Teacher("Juli neni");
+            Teacher teacherTwo = new Teacher("Zsuzsi neni");
 
-            Teacher.Teach();
-            Student.Question();
+            Teacher.Teach(teacherOne,studentOne);
+            Student.Question(teacherOne);
 
             Console.ReadLine();
         }

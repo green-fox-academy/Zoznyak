@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TeacherStudent
 {
-    class Student
+    public class Student
     {
-        string name;
+        public string name;
 
         public Student(string name)
         {
@@ -18,10 +18,16 @@ namespace TeacherStudent
             Console.WriteLine("Learning...");
         }
 
-        public static void Question()
+        internal static void Question(Teacher teacher)
         {
-            Console.WriteLine("Question from student");
+            Console.WriteLine("Student asks " + teacher.name);
             Teacher.Answer();
         }
+
+        /*public static void Question()
+         * {
+         * Console.WriteLine("Student asks a question.")
+         * }
+         */ 
     }
 }
