@@ -16,8 +16,8 @@ namespace Animal
             dog.Play();
             dog.Play();
             dog.Play();
-            Console.WriteLine(tiger.thirst);
-            Console.WriteLine(dog.thirst);
+            Console.WriteLine("Hunger level of your Tiger: {0}", tiger.thirst);
+            Console.WriteLine($"Thirst level of yor dog: {dog.thirst}");
             Console.WriteLine(dog.hunger);
             Console.ReadLine();
         }
