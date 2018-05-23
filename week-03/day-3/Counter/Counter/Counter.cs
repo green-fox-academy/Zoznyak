@@ -27,9 +27,9 @@ namespace Counter
             return result;
         }
 
-        public int Get()
+        public string Get()
         {
-            return result;
+            return result.ToString();
         }
 
         public int Reset()
