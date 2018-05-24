@@ -20,7 +20,6 @@ namespace NummerAdder
             {
                 return n + NummerAdder(n - 1); 
             }
-
         }
     }
 }
