@@ -11,8 +11,11 @@ namespace TeacherStudent
             Teacher teacherOne = new Teacher("Juli neni");
             Teacher teacherTwo = new Teacher("Zsuzsi neni");
 
-            Teacher.Teach(teacherOne,studentOne);
-            Student.Question(teacherOne);
+            Teacher.Teach(teacherOne, studentOne);
+            
+            
+            
+            //Student.Question(teacherOne);
 
             Console.ReadLine();
         }
