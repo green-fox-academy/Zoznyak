@@ -13,25 +13,35 @@ namespace Circles
         {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
+            foxDraw.StrokeColor(Colors.Black);
+            foxDraw.FillColor(Colors.Transparent);
+
             double circleSize = 200;
             double centralX = canvas.Width / 2;
             double centralY = canvas.Height / 2;
             Point startPoint = CentralPointToStart(centralX, centralY, circleSize);
 
-            foxDraw.StrokeColor(Colors.Black);
-            foxDraw.FillColor(Colors.Transparent);
-
             foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
-            
+                       
             circleSize = circleSize / 2;
             double circleRadius = circleSize / 2;
-
-            centralX += Math.Cos(DegreeToRadian(30)) * circleRadius;
-            centralY += Math.Sin(DegreeToRadian(30)) * circleRadius;
-            startPoint = CentralPointToStart(centralX, centralY, circleSize);
+            //right side small cirle
+            double centralTwoX = centralX + Math.Cos(DegreeToRadian(30)) * circleRadius;
+            double centralTwoY = centralY + Math.Sin(DegreeToRadian(30)) * circleRadius;
+            startPoint = CentralPointToStart(centralTwoX, centralTwoY, circleSize);
             foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
 
+            //left side small cirle
+            double centralThreeX = centralX - Math.Cos(DegreeToRadian(30)) * circleRadius;
+            double centralThreeY = centralY + Math.Sin(DegreeToRadian(30)) * circleRadius;
+            startPoint = CentralPointToStart(centralThreeX, centralThreeY, circleSize);
+            foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
 
+            //top small circle
+            double centralFourX = centralX;
+            double centralFourY = centralY - circleRadius;
+            startPoint = CentralPointToStart(centralFourX, centralFourY, circleSize);
+            foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
 
 
         }
