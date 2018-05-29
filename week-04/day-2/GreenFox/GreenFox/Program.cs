@@ -9,6 +9,7 @@ namespace GreenFox
             Person janeDoe = new Person();
             Console.WriteLine(janeDoe.Introduce());
             Console.WriteLine(janeDoe.GetGoal());
+            Student 
             Console.ReadLine();
         }
     }
