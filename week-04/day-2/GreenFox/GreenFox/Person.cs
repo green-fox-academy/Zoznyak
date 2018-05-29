@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GreenFox
 {
-    class Person
+    public class Person
     {
         private string name;
         private int age;
@@ -68,6 +68,11 @@ namespace GreenFox
             {
                 this.gender = value;
             }
+        }
+
+        public static implicit operator Person(List<Person> v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace GreenFox
 
         public override string GetGoal()
         {
-            return String.Format("Be a junior software developer");
+            return String.Format("My goal is: Be a junior software developer");
         }
 
         public override string Introduce()

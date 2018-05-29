@@ -25,7 +25,7 @@ namespace GreenFox
 
         public override string GetGoal()
         {
-            return String.Format("Hire brilliant junior software developers.");
+            return String.Format("My goal is: Hire brilliant junior software developers.");
         }
 
         public override string Introduce()
@@ -38,5 +38,6 @@ namespace GreenFox
         {
             hiredStudents++;
         }
+
     }
 }
