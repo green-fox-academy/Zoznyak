@@ -12,7 +12,6 @@ namespace GreenFox
         public Student(string name, int age, string gender, string previousOrganization) : base(name, age, gender)
         {
             this.previousOrganization = previousOrganization;
-            //this.skippedDays = skippedDays;
         }
 
         public Student()
@@ -21,7 +20,6 @@ namespace GreenFox
             Age = 30;
             Gender = "female";
             previousOrganization = "The School of Life";
-            skippedDays = 0;
         }
 
         public override string GetGoal()
@@ -33,5 +31,27 @@ namespace GreenFox
         {
             return String.Format("Hi, I'm {0}, a {1} year old {2} from {3} who skipped {4} days from the course already.", Name, Age, Gender, previousOrganization,skippedDays);
         }
+
+        public void SkipDays(int numberOfDays)
+        {
+            skippedDays += numberOfDays;
+        }
+
+        public string PreviousOrganization
+        {
+            get
+            {
+                return previousOrganization;
+            }
+        }
+
+        public int SkippedDays
+        {
+            get
+            {
+                return skippedDays;
+            }
+        }
+
     }
 }
