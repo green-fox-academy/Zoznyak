@@ -17,6 +17,21 @@ namespace GreenFox
             this.gender = gender;
         }
 
+        public Person()
+        {
+            this.name = "Jane Doe";
+            this.age = 30;
+            this.gender = "female";
+        }
 
+        public string Introduce()
+        {
+            return String.Format("Hi, I am {0}, a {1} years old {2}", name, age, gender);
+        }
+
+        public string GetGoal()
+        {
+            return String.Format("My goal is: Live for the moment");
+        }
     }
 }
