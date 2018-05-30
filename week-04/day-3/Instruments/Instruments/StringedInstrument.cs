@@ -28,9 +28,5 @@ namespace Instruments
         {
             this.numberOfStrings = numberOfStrings;
         }
-
-        //public virtual void Play();
-
-        //public abstract string Sound();
     }
 }
