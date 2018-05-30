@@ -18,9 +18,10 @@ namespace TeacherStudent
             Console.WriteLine("Teacher's answer");
         }
 
-        internal static void Teach(Teacher teacher, Student student)
+        public static void Teach(Teacher teacher, Student student)
         {
             Console.WriteLine(teacher.name + " is teaching " + student.name + ".");
         }
+
     }
 }

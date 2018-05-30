@@ -24,10 +24,5 @@ namespace TeacherStudent
             Teacher.Answer();
         }
 
-        /*public static void Question()
-         * {
-         * Console.WriteLine("Student asks a question.")
-         * }
-         */ 
     }
 }
