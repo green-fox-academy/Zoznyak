@@ -4,18 +4,33 @@ using System.Text;
 
 namespace Instruments 
 {
-    class StringedInstrument : Instrument
+    public abstract class StringedInstrument : Instrument
     {
         private int numberOfStrings;
 
-        public StringedInstrument(int numberOfStrings) : base ()
+        public int NumberOfStrings
         {
-
+            get
+            {
+                return this.numberOfStrings;
+            }
+            set
+            {
+                this.numberOfStrings = value;
+            }
         }
 
-        public override void Play()
+        public StringedInstrument() : base()
         {
-            throw new NotImplementedException();
         }
+
+        public StringedInstrument(int numberOfStrings) : base()
+        {
+            this.numberOfStrings = numberOfStrings;
+        }
+
+        //public virtual void Play();
+
+        //public abstract string Sound();
     }
 }
