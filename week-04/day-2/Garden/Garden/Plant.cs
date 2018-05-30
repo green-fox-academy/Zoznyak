@@ -7,12 +7,12 @@ namespace Garden
     class Plant
     {
         protected string color;
-        protected static double levelOfWater = 0;
+        protected double levelOfWater;
 
         public Plant(string color)
         {
             this.color = color;
-            //this.levelOfWater = 0;
+            levelOfWater = 0;
         }
 
         public virtual void Water(int amount)

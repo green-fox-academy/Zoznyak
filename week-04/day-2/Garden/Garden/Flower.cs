@@ -25,7 +25,5 @@ namespace Garden
             else return String.Format("The {0} flower needs water!", color);
         }
 
-
-
     }
 }
