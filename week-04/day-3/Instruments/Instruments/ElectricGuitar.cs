@@ -6,15 +6,16 @@ namespace Instruments
 {
     class ElectricGuitar : StringedInstrument
     {
-        private string name = "Electric Guitar";
         public ElectricGuitar() : base()
         {
             NumberOfStrings = 6;
+            name = "Electric Guitar";
         }
 
         public ElectricGuitar(int numberOfStrings) : base()
         {
             this.NumberOfStrings = numberOfStrings;
+            name = "Electric Guitar";
         }
 
         public override string Sound()

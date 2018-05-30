@@ -6,15 +6,16 @@ namespace Instruments
 {
     class Violin : StringedInstrument
     {
-        private string name = "Violin";
         public Violin() : base()
         {
             NumberOfStrings = 4;
+            name = "Violin";
         }
 
         public Violin(int numberOfStrings) : base()
         {
             this.NumberOfStrings = numberOfStrings;
+            name = "Violin";
         }
 
         public override string Sound()
