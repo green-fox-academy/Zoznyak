@@ -9,42 +9,23 @@ namespace Circles
 
     public partial class MainWindow : Window
     {
+        FoxDraw foxDraw;
+
         public MainWindow()
         {
             InitializeComponent();
-            var foxDraw = new FoxDraw(canvas);
+            foxDraw = new FoxDraw(canvas);
             foxDraw.StrokeColor(Colors.Black);
             foxDraw.FillColor(Colors.Transparent);
 
             double circleSize = 200;
             double centralX = canvas.Width / 2;
             double centralY = canvas.Height / 2;
-            Point startPoint = CentralPointToStart(centralX, centralY, circleSize);
-
-            foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
-                       
-            circleSize = circleSize / 2;
-            double circleRadius = circleSize / 2;
-            //right side small cirle
-            double centralTwoX = centralX + Math.Cos(DegreeToRadian(30)) * circleRadius;
-            double centralTwoY = centralY + Math.Sin(DegreeToRadian(30)) * circleRadius;
-            startPoint = CentralPointToStart(centralTwoX, centralTwoY, circleSize);
-            foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
-
-            //left side small cirle
-            double centralThreeX = centralX - Math.Cos(DegreeToRadian(30)) * circleRadius;
-            double centralThreeY = centralY + Math.Sin(DegreeToRadian(30)) * circleRadius;
-            startPoint = CentralPointToStart(centralThreeX, centralThreeY, circleSize);
-            foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
-
-            //top small circle
-            double centralFourX = centralX;
-            double centralFourY = centralY - circleRadius;
-            startPoint = CentralPointToStart(centralFourX, centralFourY, circleSize);
-            foxDraw.DrawEllipse(startPoint.X, startPoint.Y, circleSize, circleSize);
-
+            
+            DrawCirlces(centralX,centralY,circleSize);
 
         }
+
 
         private double DegreeToRadian(double angle)
         {
@@ -56,6 +37,38 @@ namespace Circles
             Point startPoint = new Point(centralX-(size/2), centralY-(size/2));
             return startPoint;
         }
-    }
 
+        public void DrawCirlces(double centralX, double centralY, double sizeOfCircle)
+        {
+            while (sizeOfCircle >90)
+            {
+                Point startPoint = CentralPointToStart(centralX, centralY, sizeOfCircle);
+
+                foxDraw.DrawEllipse(startPoint.X, startPoint.Y, sizeOfCircle, sizeOfCircle);
+
+                sizeOfCircle = sizeOfCircle / 2;
+                double circleRadius = sizeOfCircle / 2;
+                //right side small cirle
+                double centralTwoX = centralX + Math.Cos(DegreeToRadian(30)) * circleRadius;
+                double centralTwoY = centralY + Math.Sin(DegreeToRadian(30)) * circleRadius;
+                startPoint = CentralPointToStart(centralTwoX, centralTwoY, sizeOfCircle);
+                foxDraw.DrawEllipse(startPoint.X, startPoint.Y, sizeOfCircle, sizeOfCircle);
+
+                //left side small cirle
+                double centralThreeX = centralX - Math.Cos(DegreeToRadian(30)) * circleRadius;
+                double centralThreeY = centralY + Math.Sin(DegreeToRadian(30)) * circleRadius;
+                startPoint = CentralPointToStart(centralThreeX, centralThreeY, sizeOfCircle);
+                foxDraw.DrawEllipse(startPoint.X, startPoint.Y, sizeOfCircle, sizeOfCircle);
+
+                //top small circle
+                double centralFourX = centralX;
+                double centralFourY = centralY - circleRadius;
+                startPoint = CentralPointToStart(centralFourX, centralFourY, sizeOfCircle);
+                foxDraw.DrawEllipse(startPoint.X, startPoint.Y, sizeOfCircle, sizeOfCircle);
+
+                DrawCirlces(centralFourX, centralFourY, sizeOfCircle); ;
+            }
+            
+        }
+    }
 }
