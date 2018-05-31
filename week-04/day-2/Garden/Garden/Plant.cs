@@ -4,29 +4,29 @@ using System.Text;
 
 namespace Garden
 {
-    class Plant
+    public abstract class Plant
     {
         protected string color;
         protected double levelOfWater;
+        protected bool needWater;
 
         public Plant(string color)
         {
             this.color = color;
             levelOfWater = 0;
+            needWater = true;
         }
 
-        public virtual void Water(int amount)
+        public bool NeedWater
         {
-            levelOfWater += amount * 1;
+            get
+                {
+                return needWater;
+                }
         }
 
-        public virtual string LevelOfWater()
-        {
-            if (levelOfWater >= 5)
-            {
-                return String.Format("The {0} flower does not need water!", color);
-            }
-            else return String.Format("The {0} flower needs water!", color);
-        }
+        public abstract void Water(int amount);
+
+        public abstract string LevelOfWater();
     }
 }

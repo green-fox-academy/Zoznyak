@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Garden
 {
@@ -20,10 +18,12 @@ namespace Garden
         {
             if (levelOfWater >= 10)
             {
-                return String.Format("The {0} tree does not need water!", color);
+                needWater = false;
+                return String.Format("The {0} tree does not need water! {1}", color, levelOfWater);
             }
-            else return String.Format("The {0} tree needs water!", color);
+            else
+                needWater = true;
+            return String.Format("The {0} tree needs water! {1}", color, levelOfWater);
         }
-
     }
 }
