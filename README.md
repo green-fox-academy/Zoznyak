@@ -1,6 +1,7 @@
 # **Kasza Zoltan**
 
 ### **Repos:**<br>
+[Trial Exam](https://github.com/Zoznyak/exam-trial-basics.git) |
 [Todo App](https://github.com/Zoznyak/todo-app.git)
 
 ### **Links:**<br>
