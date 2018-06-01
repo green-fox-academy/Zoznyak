@@ -1,7 +1,7 @@
 # **Kasza Zoltan**
 
 ###**Repos:**<br>
-(https://github.com/Zoznyak/todo-app.git)
+[Todo App](https://github.com/Zoznyak/todo-app.git)
 
 ### **Links:**<br>
 [Github](http://github.com/Zoznyak) | 
