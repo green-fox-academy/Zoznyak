@@ -2,7 +2,8 @@
 
 ### **Repos:**<br>
 [Trial Exam](https://github.com/Zoznyak/exam-trial-basics.git) |
-[Todo App](https://github.com/Zoznyak/todo-app.git)
+[Todo App](https://github.com/Zoznyak/todo-app.git) |
+[Macrotis-Basic-Exam](https://github.com/Zoznyak/macrotis-basic-exam.git)
 
 ### **Links:**<br>
 [Github](http://github.com/Zoznyak) | 
