@@ -7,7 +7,6 @@ namespace TeacherStudent
     public class Student
     {
         public string name;
-
         public Student(string name)
         {
             this.name = name;
@@ -23,6 +22,5 @@ namespace TeacherStudent
             Console.WriteLine("Student asks " + teacher.name);
             Teacher.Answer();
         }
-
     }
 }
