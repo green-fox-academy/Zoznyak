@@ -6,11 +6,11 @@ namespace TeacherStudent
     {
         static void Main(string[] args)
         {
-            Student studentOne = new Student("Moricka");
-            Student studentTwo = new Student("Jozsika");
-            Teacher teacherOne = new Teacher("Juli neni");
-            Teacher teacherTwo = new Teacher("Zsuzsi neni");
-            Teacher.Teach(teacherOne, studentOne);
+            Student moricka = new Student("Moricka");
+            Student jozsika = new Student("Jozsika");
+            Teacher juliNeni = new Teacher("Juli neni");
+            Teacher zsuzsiNeni = new Teacher("Zsuzsi neni");
+            Teacher.Teach(juliNeni, moricka);
             Console.ReadLine();
         }
     }
