@@ -15,16 +15,14 @@ namespace Counter
             result = defaultNumber;
         }
 
-        public int Add(int number)
+        public void Add(int number)
         {
             result += number;
-            return result;
         }
 
-        public int Add()
+        public void Add()
         {
             result++;
-            return result;
         }
 
         public string Get()

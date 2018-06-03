@@ -6,7 +6,8 @@ namespace Counter
     {
         static void Main(string[] args)
         {
-            Counter counterOne = new Counter(5);
+            Counter counterOne = new Counter(6);
+            Console.WriteLine($"Current value is: {counterOne.Get()}");
             counterOne.Add();
             Console.WriteLine($"Current value is: {counterOne.Get()}");
             counterOne.Add(7);
