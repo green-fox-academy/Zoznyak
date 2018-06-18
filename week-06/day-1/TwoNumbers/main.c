@@ -7,13 +7,21 @@ int main()
     int num2 = 13;
     int resultSubstraction;
     int resultAddition;
+    int resultMultiplication;
+    int resultDivision;
+    int resultModulus;
 
     resultAddition = num1 + num2;
     resultSubstraction = num1 - num2;
+    resultMultiplication = num1 * num2;
+    resultDivision = num1 / num2;
+    resultModulus = num1 % num2;
 
-
-    printf("22 + 13 = %i\n", resultAddition);
-    printf("22 - 13 = %i\n", resultSubstraction);
+    printf("%i + %i = %i\n", num1, num2, resultAddition);
+    printf("%i - %i = %i\n", num1, num2, resultSubstraction);
+    printf("%i * %i = %i\n", num1, num2, resultMultiplication);
+    printf("%i / %i = %i\n", num1, num2, resultDivision);
+    printf("%i %% %i = %i\n", num1, num2, resultModulus);
     return 0;
 }
 

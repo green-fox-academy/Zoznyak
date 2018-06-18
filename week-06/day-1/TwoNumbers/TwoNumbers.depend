@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1529325866 source:d:\greenfox\zoznyak\week-06\day-1\twonumbers\main.c
+	<stdio.h>
+	<stdlib.h>
+
