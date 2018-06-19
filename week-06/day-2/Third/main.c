@@ -4,6 +4,6 @@
 int main()
 {
     int q[] = {4,5,6,7};
-    printf("Hello world!\n");
+    printf("%d", q[2]);
     return 0;
 }
