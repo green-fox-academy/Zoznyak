@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1529415473 source:d:\greenfox\zoznyak\week-06\day-2\matrix\main.c
+	<stdio.h>
+	<stdlib.h>
+
