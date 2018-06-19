@@ -4,6 +4,6 @@
 int main()
 {
     int number = 1234;
-    printf("Memory address of the number: %p\n", number);
+    printf("Memory address of the number: %p\n", &number);
     return 0;
 }
