@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1529424729 source:d:\greenfox\zoznyak\week-06\day-2\sum\main.c
+	<stdio.h>
+	<stdlib.h>
+
