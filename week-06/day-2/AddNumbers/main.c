@@ -5,9 +5,12 @@ int main()
 {
     int a = 20;
     int b = 17;
-    int *a = &a;
-    int *b = &b;
+    int *pa = &a;
+    int *pb = &b;
+    int sum;
 
-    printf("Hello world!\n");
+    sum = *pa + *pb;
+
+    printf("%i\n", sum);
     return 0;
 }
