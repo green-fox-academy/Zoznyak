@@ -10,7 +10,6 @@ int main()
     int sum;
 
     sum = *pa + *pb;
-
     printf("%i\n", sum);
     return 0;
 }
