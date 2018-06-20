@@ -14,5 +14,6 @@ int main()
     {
         printf("%i\n", a[i]);
     }
+    free(a);
     return 0;
 }
