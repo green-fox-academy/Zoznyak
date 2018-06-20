@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1529504264 source:d:\greenfox\zoznyak\week-06\day-3\calloc\main.c
+	<stdio.h>
+	<stdlib.h>
+
