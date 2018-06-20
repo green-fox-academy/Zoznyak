@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1529502981 source:d:\greenfox\zoznyak\week-06\day-3\malloc\main.c
+	<stdio.h>
+	<stdlib.h>
+
