@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1529594761 source:d:\greenfox\zoznyak\week-06\day-4\countlines\main.c
+	<stdio.h>
+	<stdlib.h>
+
