@@ -2,22 +2,22 @@
 #include <stdlib.h>
 
 void token_text(char line[], char *pword, char *ppath, int *number);
+void write_file(char *pword, char *ppath, int number);
 
 int main()
 {
     char line[100];
-    int number;
+    int number = 0;
     char path[30];
     char word[30];
-    int *pnumber = &number;
     char *ppath = &path;
     char *pword = &word;
     printf("Enter a filename, a word and a number:\n");
-    token_text(gets(line), pword, ppath, pnumber);
-
+    token_text(gets(line), pword, ppath, &number);
+    write_file(pword, ppath, number);
     return 0;
 }
-void token_text(char line[], char *pword, char *ppath, int *pnumber)
+void token_text(char line[], char *pword, char *ppath, int *number)
 {
     int i;
     char *p;
@@ -25,19 +25,29 @@ void token_text(char line[], char *pword, char *ppath, int *pnumber)
     {
         if (atoi(p) > 0 )
         {
-            pnumber = atoi(p);
-            printf("Number: %d\n", pnumber);
+            *number = atoi(p);
         }
         if (strchr(p, '.') != NULL)
         {
             strcpy(ppath, p);
-            printf("Path: %s\n", ppath);
         }
         else if (atoi(p) == 0)
         {
             strcpy(pword, p);
-            printf("Word: %s\n", pword);
         }
     }
+}
+
+void write_file(char *pword, char *ppath, int number)
+{
+    FILE *fp;
+    int i;
+    fp = fopen(ppath, "w");
+    for (i = 0; i < number; i++)
+    {
+        fputs(pword, fp);
+        fputs("\n",fp);
+    }
+    fclose(fp);
 }
 
