@@ -19,7 +19,6 @@ int main()
     int num2 = NULL;
     int result = 0;
     char oper = 'a';
-    int lineYPos = 0;
 
     read_file();
     getchar();
@@ -27,16 +26,23 @@ int main()
     while (1)
     {
         gets(line);
-        if (strchr(line, "exit"))
+        if (strstr(line, "exit"))
         {
             break;
         }
-        set_cursor_pos(strlen(line), lineYPos);
-        token_input(line, &num1, &num2, &oper);
-        choose_operation(oper, num1, num2, &result);
-        printf(" = %d\n", result);
-        lineYPos++;
-        num1 = NULL;
+        if (strstr(line, "clear"))
+        {
+            clear_screen();
+        }
+        else if (!(strstr(line, "exit")) && !(strstr(line, "clear")))
+        {
+            set_cursor_pos(strlen(line), coord.Y);
+            token_input(line, &num1, &num2, &oper);
+            choose_operation(oper, num1, num2, &result);
+            printf(" = %d\n", result);
+            coord.Y++;
+            num1 = NULL;
+        }
     }
     return 0;
 }
@@ -89,15 +95,18 @@ int subtraction(int num1, int num2)
 }
 
 void set_cursor_pos(int x, int y)
-    {
+{
 	coord.X = x;
 	coord.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-    }
+}
 
 void clear_screen()
 {
     system("@cls||clear");
+    coord.X = 0;
+    coord.Y = 0;
+    set_cursor_pos(coord.X, coord.Y);
 }
 
 void read_file()
