@@ -2,13 +2,16 @@
 #include <stdlib.h>
 
 void token_input(char line[], int *num1, int *num2, char *oper);
-void choose_operation(char oper);
+void choose_operation(char oper, int num1, int num2, int *result);
+int addition(int num1, int num2);
+int subtraction(int num1, int num2);
 
 int main()
 {
     char line[30];
     int num1 = NULL;
     int num2 = NULL;
+    int result = 0;
     char oper = 'a';
     puts("\t   CLI Calculator");
     puts("====================================");
@@ -33,7 +36,9 @@ int main()
     puts("====================================");
     getchar();
     token_input(gets(line), &num1, &num2, &oper);
-    choose_operation(oper);
+    choose_operation(oper, num1, num2, &result);
+    puts("");
+    printf("The result is: %d", result);
     return 0;
 }
 void token_input(char line[], int *num1, int *num2, char *oper)
@@ -56,18 +61,30 @@ void token_input(char line[], int *num1, int *num2, char *oper)
         }
     }
 }
-void choose_operation(char oper)
+void choose_operation(char oper, int num1, int num2, int *result)
 {
     switch(oper)
     {
     case '+':
-        printf("Addition!!!!!");
+        *result = addition(num1, num2);
         break;
     case '-':
-        printf("Substitution");
+        *result = subtraction(num1, num2);
         break;
     case '*':
         printf("Multiplication");
         break;
     }
+}
+
+int addition(int num1, int num2)
+{
+    int result = num1 + num2;
+    return result;
+}
+
+int subtraction(int num1, int num2)
+{
+    int result = num1 - num2;
+    return result;
 }
