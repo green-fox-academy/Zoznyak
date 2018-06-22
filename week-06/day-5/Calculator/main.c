@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 void token_input(char line[], int *num1, int *num2, char *oper);
 void choose_operation(char oper, int num1, int num2, int *result);
 int addition(int num1, int num2);
 int subtraction(int num1, int num2);
+void set_cursor_pos(int x, int y);
+void clear_screen();
+
+COORD coord = {0,0};
 
 int main()
 {
@@ -13,6 +18,7 @@ int main()
     int num2 = NULL;
     int result = 0;
     char oper = 'a';
+    int lengthOfLine;
     puts("\t   CLI Calculator");
     puts("====================================");
     puts("usage: [number] [operation] [number]");
@@ -35,10 +41,15 @@ int main()
     puts("Hit enter to start!");
     puts("====================================");
     getchar();
-    token_input(gets(line), &num1, &num2, &oper);
+    clear_screen();
+    gets(line);
+    set_cursor_pos(strlen(line), 0);
+    token_input(line, &num1, &num2, &oper);
     choose_operation(oper, num1, num2, &result);
-    puts("");
-    printf("The result is: %d", result);
+    //puts("");
+    printf(" = %d", result);
+
+
     return 0;
 }
 void token_input(char line[], int *num1, int *num2, char *oper)
@@ -87,4 +98,16 @@ int subtraction(int num1, int num2)
 {
     int result = num1 - num2;
     return result;
+}
+
+void set_cursor_pos(int x, int y)
+    {
+	coord.X = x;
+	coord.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+    }
+
+void clear_screen()
+{
+    system("@cls||clear");
 }
