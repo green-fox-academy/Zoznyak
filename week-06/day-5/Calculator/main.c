@@ -1,8 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void token_input(char line[], int *num1, int *num2, char *oper);
+
 int main()
 {
+    char line[30];
+    int num1 = NULL;
+    int num2 = NULL;
+    char oper = 'a';
     puts("\t   CLI Calculator");
     puts("====================================");
     puts("usage: [number] [operation] [number]");
@@ -24,6 +30,30 @@ int main()
     puts("====================================");
     puts("Hit enter to start!");
     puts("====================================");
-
+    getchar();
+    token_input(gets(line), &num1, &num2, &oper);
+    printf("%c", oper);
+    printf("%d", num1);
+    printf("%d", num2);
     return 0;
+}
+void token_input(char line[], int *num1, int *num2, char *oper)
+{
+    int i;
+    char *p;
+    for (p = strtok(line, " "); p != NULL; p = strtok(NULL, " "))
+    {
+        if ((atoi(p) > 0) && (*num1 == NULL))
+        {
+            *num1 = atoi(p);
+        }
+        if (atoi(p) == 0)
+        {
+            *oper = *p;
+        }
+        if ((atoi(p) > 0) && (*num1 != NULL))
+        {
+            *num2 = atoi(p);
+        }
+    }
 }
