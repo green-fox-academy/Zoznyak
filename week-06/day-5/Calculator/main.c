@@ -6,9 +6,11 @@ void token_input(char line[], int *num1, int *num2, char *oper);
 void choose_operation(char oper, int num1, int num2, int *result);
 int addition(int num1, int num2);
 int subtraction(int num1, int num2);
+int multiplication(int num1, int num2);
 void set_cursor_pos(int x, int y);
 void clear_screen();
 void read_file();
+void help();
 
 COORD coord = {0,0};
 
@@ -34,7 +36,11 @@ int main()
         {
             clear_screen();
         }
-        else if (!(strstr(line, "exit")) && !(strstr(line, "clear")))
+        if (strstr(line, "help"))
+        {
+            help();
+        }
+        else if (!(strstr(line, "exit")) && !(strstr(line, "clear")) && !(strstr(line, "help")))
         {
             set_cursor_pos(strlen(line), coord.Y);
             token_input(line, &num1, &num2, &oper);
@@ -77,7 +83,7 @@ void choose_operation(char oper, int num1, int num2, int *result)
         *result = subtraction(num1, num2);
         break;
     case '*':
-        printf("Multiplication");
+        *result = multiplication(num1, num2);
         break;
     }
 }
@@ -91,6 +97,12 @@ int addition(int num1, int num2)
 int subtraction(int num1, int num2)
 {
     int result = num1 - num2;
+    return result;
+}
+
+int multiplication(int num1, int num2)
+{
+    int result = num1 * num2;
     return result;
 }
 
@@ -119,4 +131,12 @@ void read_file()
         printf("%s", textLine);
     }
     fclose(fp);
+}
+
+void help()
+{
+    clear_screen();
+    read_file();
+    getchar();
+    clear_screen();
 }
