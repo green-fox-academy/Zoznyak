@@ -14,22 +14,30 @@ COORD coord = {0,0};
 
 int main()
 {
-    char line[30];
+    char line[30] = "dsfs";
     int num1 = NULL;
     int num2 = NULL;
     int result = 0;
     char oper = 'a';
-    int lengthOfLine;
+    int lineYPos = 0;
 
     read_file();
     getchar();
     clear_screen();
-    gets(line);
-    set_cursor_pos(strlen(line), 0);
-    token_input(line, &num1, &num2, &oper);
-    choose_operation(oper, num1, num2, &result);
-    printf(" = %d", result);
-
+    while (1)
+    {
+        gets(line);
+        if (strchr(line, "exit"))
+        {
+            break;
+        }
+        set_cursor_pos(strlen(line), lineYPos);
+        token_input(line, &num1, &num2, &oper);
+        choose_operation(oper, num1, num2, &result);
+        printf(" = %d\n", result);
+        lineYPos++;
+        num1 = NULL;
+    }
     return 0;
 }
 void token_input(char line[], int *num1, int *num2, char *oper)
