@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 void token_input(char line[], int *num1, int *num2, char *oper);
+void choose_operation(char oper);
 
 int main()
 {
@@ -32,9 +33,7 @@ int main()
     puts("====================================");
     getchar();
     token_input(gets(line), &num1, &num2, &oper);
-    printf("%c", oper);
-    printf("%d", num1);
-    printf("%d", num2);
+    choose_operation(oper);
     return 0;
 }
 void token_input(char line[], int *num1, int *num2, char *oper)
@@ -55,5 +54,20 @@ void token_input(char line[], int *num1, int *num2, char *oper)
         {
             *num2 = atoi(p);
         }
+    }
+}
+void choose_operation(char oper)
+{
+    switch(oper)
+    {
+    case '+':
+        printf("Addition!!!!!");
+        break;
+    case '-':
+        printf("Substitution");
+        break;
+    case '*':
+        printf("Multiplication");
+        break;
     }
 }
