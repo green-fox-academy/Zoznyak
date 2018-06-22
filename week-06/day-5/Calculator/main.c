@@ -8,6 +8,7 @@ int addition(int num1, int num2);
 int subtraction(int num1, int num2);
 void set_cursor_pos(int x, int y);
 void clear_screen();
+void read_file();
 
 COORD coord = {0,0};
 
@@ -19,36 +20,15 @@ int main()
     int result = 0;
     char oper = 'a';
     int lengthOfLine;
-    puts("\t   CLI Calculator");
-    puts("====================================");
-    puts("usage: [number] [operation] [number]");
-    puts("Commands:\n");
-    puts(" +\t summation");
-    puts(" -\t subtraction");
-    puts(" *\t multiplication");
-    puts(" /\t division");
-    puts(" %\t division with reminder");
-    puts(" ^\t squaring");
-    puts(" log\t logarithm");
-    puts(" binto\t binary to hex or dec");
-    puts(" hexto\t hexadecimal to bin or dec");
-    puts(" decto\t decimal to bin or hey");
-    puts("====================================");
-    puts(" exit\t exiting from the program");
-    puts(" clear\t clear the screen");
-    puts(" help\t print usage");
-    puts("====================================");
-    puts("Hit enter to start!");
-    puts("====================================");
+
+    read_file();
     getchar();
     clear_screen();
     gets(line);
     set_cursor_pos(strlen(line), 0);
     token_input(line, &num1, &num2, &oper);
     choose_operation(oper, num1, num2, &result);
-    //puts("");
     printf(" = %d", result);
-
 
     return 0;
 }
@@ -110,4 +90,16 @@ void set_cursor_pos(int x, int y)
 void clear_screen()
 {
     system("@cls||clear");
+}
+
+void read_file()
+{
+    char textLine[50];
+    FILE *fp;
+    fp = fopen("help.txt", "r");
+    while (fgets(textLine, 80, fp) != NULL)
+    {
+        printf("%s", textLine);
+    }
+    fclose(fp);
 }
