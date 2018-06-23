@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1529674365 source:d:\greenfox\zoznyak\week-06\day-5\calculator\main.c
+1529753981 source:d:\greenfox\zoznyak\week-06\day-5\calculator\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>

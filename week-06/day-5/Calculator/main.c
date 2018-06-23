@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <windows.h>
 
-void token_input(char line[], int *num1, int *num2, char *oper);
-void choose_operation(char oper, int num1, int num2, int *result);
-int addition(int num1, int num2);
-int subtraction(int num1, int num2);
-int multiplication(int num1, int num2);
-int division(int num1, int num2);
+void token_input(char line[], float *num1, float *num2, char *oper);
+void choose_operation(char oper, float num1, float num2, float *result);
+float addition(float num1, float num2);
+float subtraction(float num1, float num2);
+float multiplication(float num1, float num2);
+float division(float num1, float num2);
 void set_cursor_pos(int x, int y);
 void clear_screen();
 void read_file();
@@ -18,9 +18,9 @@ COORD coord = {0,0};
 int main()
 {
     char line[30] = "dsfs";
-    int num1 = NULL;
-    int num2 = NULL;
-    int result = 0;
+    float num1 = 0;
+    float num2 = 0;
+    float result = 0;
     char oper = 'a';
 
     read_file();
@@ -46,34 +46,34 @@ int main()
             set_cursor_pos(strlen(line), coord.Y);
             token_input(line, &num1, &num2, &oper);
             choose_operation(oper, num1, num2, &result);
-            printf(" = %d\n", result);
+            printf(" = %.3f\n", result);
             coord.Y++;
-            num1 = NULL;
+            num1 = 0;
         }
     }
     return 0;
 }
-void token_input(char line[], int *num1, int *num2, char *oper)
+void token_input(char line[], float *num1, float *num2, char *oper)
 {
     int i;
     char *p;
     for (p = strtok(line, " "); p != NULL; p = strtok(NULL, " "))
     {
-        if ((atoi(p) > 0) && (*num1 == NULL))
+        if ((atof(p) > 0) && (*num1 == 0))
         {
-            *num1 = atoi(p);
+            *num1 = atof(p);
         }
-        if (atoi(p) == 0)
+        if (atof(p) == 0)
         {
             *oper = *p;
         }
-        if ((atoi(p) > 0) && (*num1 != NULL))
+        if ((atof(p) > 0) && (*num1 != 0))
         {
-            *num2 = atoi(p);
+            *num2 = atof(p);
         }
     }
 }
-void choose_operation(char oper, int num1, int num2, int *result)
+void choose_operation(char oper, float num1, float num2, float *result)
 {
     switch(oper)
     {
@@ -92,29 +92,29 @@ void choose_operation(char oper, int num1, int num2, int *result)
     }
 }
 
-int addition(int num1, int num2)
+float addition(float num1, float num2)
 {
-    int result = num1 + num2;
+    float result = num1 + num2;
     return result;
 }
 
-int subtraction(int num1, int num2)
+float subtraction(float num1, float num2)
 {
-    int result = num1 - num2;
+    float result = num1 - num2;
     return result;
 }
 
-int multiplication(int num1, int num2)
+float multiplication(float num1, float num2)
 {
-    int result = num1 * num2;
+    float result = num1 * num2;
     return result;
 }
 
-int division(int num1, int num2)
+float division(float num1, float num2)
 {
     if (num2 != 0)
     {
-        int result = num1 / num2;
+        float result = num1 / num2;
         return result;
     }
 }
