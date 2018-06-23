@@ -7,6 +7,7 @@ void choose_operation(char oper, int num1, int num2, int *result);
 int addition(int num1, int num2);
 int subtraction(int num1, int num2);
 int multiplication(int num1, int num2);
+int division(int num1, int num2);
 void set_cursor_pos(int x, int y);
 void clear_screen();
 void read_file();
@@ -85,6 +86,9 @@ void choose_operation(char oper, int num1, int num2, int *result)
     case '*':
         *result = multiplication(num1, num2);
         break;
+    case '/':
+        *result = division(num1, num2);
+        break;
     }
 }
 
@@ -104,6 +108,15 @@ int multiplication(int num1, int num2)
 {
     int result = num1 * num2;
     return result;
+}
+
+int division(int num1, int num2)
+{
+    if (num2 != 0)
+    {
+        int result = num1 / num2;
+        return result;
+    }
 }
 
 void set_cursor_pos(int x, int y)
