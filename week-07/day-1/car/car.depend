@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1529941293 source:d:\greenfox\zoznyak\week-07\day-1\car\car.c
+	"car.h"
+
+1529941084 d:\greenfox\zoznyak\week-07\day-1\car\car.h
+
+1529941368 source:d:\greenfox\zoznyak\week-07\day-1\car\main.c
+	<stdio.h>
+	<stdlib.h>
+	"car.h"
+

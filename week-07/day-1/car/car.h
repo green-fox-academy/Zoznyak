@@ -13,5 +13,6 @@ typedef struct{
 	double gas;
 }car;
 
+void stat(car item);
 
 #endif // CAR_H_INCLUDED
