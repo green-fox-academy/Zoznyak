@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define PI 3.14
-
-float Area(float radius);
+#include "circle.h"
 
 int main()
 {
@@ -13,8 +11,4 @@ int main()
     return 0;
 }
 
-float Area(float radius)
-{
-    float area = radius * radius * PI;
-    return area;
-}
+

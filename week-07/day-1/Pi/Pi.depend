@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1529931472 source:d:\greenfox\zoznyak\week-07\day-1\pi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"circle.h"
+
+1529931469 d:\greenfox\zoznyak\week-07\day-1\pi\circle.h
+
+1529931530 source:d:\greenfox\zoznyak\week-07\day-1\pi\circle.c
+	"circle.h"
+
