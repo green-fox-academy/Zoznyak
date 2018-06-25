@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1529933415 source:d:\greenfox\zoznyak\week-07\day-1\pc\notebook.c
+
+1529933433 source:d:\greenfox\zoznyak\week-07\day-1\pc\pc.c
+
+1529933526 source:d:\greenfox\zoznyak\week-07\day-1\pc\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pc.h"
+	"notebook.h"
+
+1529933478 d:\greenfox\zoznyak\week-07\day-1\pc\pc.h
+
+1529933407 d:\greenfox\zoznyak\week-07\day-1\pc\notebook.h
+
