@@ -1,0 +1,6 @@
+#ifndef HOUSE_H_INCLUDED
+#define HOUSE_H_INCLUDED
+
+
+
+#endif // HOUSE_H_INCLUDED
