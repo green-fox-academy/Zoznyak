@@ -6,9 +6,7 @@ struct rectangular_cuboid {
     double b;
     double c;
 };
-
 double GetSurface(double a, double b, double c);
 double GetVolume(double a, double b, double c);
-
 
 #endif // RECTANGLE_H_INCLUDED
