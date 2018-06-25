@@ -19,6 +19,7 @@ int main()
     scanf("%lf", &c);
 
     printf("The surface of the rectangle is: %.2lf\n", GetSurface(a, b, c));
+    printf("The surface of the rectangle is: %.2lf\n", GetVolume(a, b, c));
     return 0;
 }
 
