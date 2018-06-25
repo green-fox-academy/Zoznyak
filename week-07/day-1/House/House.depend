@@ -1,6 +1,11 @@
 # depslib dependency file v1.0
-1529955273 source:d:\greenfox\zoznyak\week-07\day-1\house\house.c
+1529958347 source:d:\greenfox\zoznyak\week-07\day-1\house\house.c
 	"house.h"
 
-1529955273 d:\greenfox\zoznyak\week-07\day-1\house\house.h
+1529958347 d:\greenfox\zoznyak\week-07\day-1\house\house.h
+
+1529957067 source:d:\greenfox\zoznyak\week-07\day-1\house\main.c
+	<stdio.h>
+	<stdlib.h>
+	"house.h"
 

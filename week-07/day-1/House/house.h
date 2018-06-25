@@ -9,6 +9,6 @@ typedef struct{
     float area;
 }t_house;
 
-void worth_it(t_house house);
+void worth_it(char* worth_or_not, t_house house);
 
 #endif // HOUSE_H_INCLUDED

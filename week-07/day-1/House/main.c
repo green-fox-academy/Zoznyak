@@ -6,6 +6,7 @@
 int main()
 {
     t_house house1, house2;
+    char* worth_or_not[15];
     strcpy(house1.address, "1027. Bp., Keletei Karoly 5.");
     house1.area = 150;
     house1.rooms = 3;
@@ -14,6 +15,10 @@ int main()
     house2.area = 120;
     house2.rooms = 3;
     house2.price = 47000;
-
-    worth_it(house2);
+    worth_it(worth_or_not, house1);
+    printf("The house %s the price.\n", worth_or_not);
+    return 0;
 }
+
+
+
