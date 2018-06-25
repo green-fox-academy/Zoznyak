@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1529942953 source:d:\greenfox\zoznyak\week-07\day-1\coordinates\main.c
+	<stdio.h>
+	<stdlib.h>
+
