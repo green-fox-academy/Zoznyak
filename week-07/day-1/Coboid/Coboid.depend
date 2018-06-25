@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1529951825 source:d:\greenfox\zoznyak\week-07\day-1\coboid\main.c
+	<stdio.h>
+	<stdlib.h>
+	"rectangle.h"
+
+1529951825 d:\greenfox\zoznyak\week-07\day-1\coboid\rectangle.h
+
+1529951834 source:d:\greenfox\zoznyak\week-07\day-1\coboid\rectangle.c
+	"rectangle.h"
+
