@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1530010298 source:d:\greenfox\zoznyak\week-07\day-2\todo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+
+1530010245 d:\greenfox\zoznyak\week-07\day-2\todo\file.h
+
