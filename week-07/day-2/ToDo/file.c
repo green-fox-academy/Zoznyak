@@ -12,3 +12,16 @@ void read_file()
     }
     fclose(fp);
 }
+
+void write_file(char text[])
+{
+    FILE *fp;
+    fp = fopen("todos.txt", "a");
+    if(fp==NULL) {
+        perror("Error opening file.");
+    }
+    else {
+        fprintf(fp, "%s\n", text);
+        fclose(fp);
+    }
+}

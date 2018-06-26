@@ -12,8 +12,11 @@ int main(int argc, char *argv[])
         if (strcmp(argv[1], "-h") == 0){
             read_file();
         }
+   }
+   if( argc == 3 ) {
         if (strcmp(argv[1], "-a") == 0){
-            printf("%s", "First argument is -a");
+            write_file(argv[2]);
+            //printf("%s", "First argument is -a");
         }
         if (strcmp(argv[1], "-l") == 0){
             printf("%s", "First argument is -l");
@@ -23,11 +26,6 @@ int main(int argc, char *argv[])
         }
         if (strcmp(argv[1], "-c") == 0){
             printf("%s", "First argument is -c");
-        }
-   }
-   if( argc == 3 ) {
-        if (strcmp(argv[1], "-h") == 0){
-            printf("%s", "Second argument");
         }
    }
    else if( argc > 3 ) {
