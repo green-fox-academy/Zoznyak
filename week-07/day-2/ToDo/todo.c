@@ -43,19 +43,19 @@ void write_todo(t_todo task)
     }
 }
 
-void token_todos(char line[], t_todo task)
+void token_todos(char line[], int i)
 {
     char *p;
     for (p = strtok(line, "|"); p != NULL; p = strtok(NULL, "|"))
     {
-        if ((atoi(p) > 0) && (task.priority == 0))
+        if ((atoi(p) > 0) && (todos[i].priority == 0))
         {
-            task.priority = atoi(p);
+            todos[i].priority = atoi(p);
         }
 
-        if ((atoi(p) > 0) && (task.priority != 0))
+        if ((atoi(p) > 0) && (todos[i].priority != 0))
         {
-            task.done = atoi(p);
+            todos[i].done = atoi(p);
         }
     }
 }
@@ -69,7 +69,7 @@ void read_todos()
     for (i = 0; i < 10; i++){
         while (fgets(textLine, 80, fp) != NULL){
             printf("%s", textLine);
-            token_todos(textLine, todos[i]);
+            token_todos(textLine, i);
         }
     }
     fclose(fp);
