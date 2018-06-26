@@ -13,5 +13,8 @@ t_todo todos[10];
 
 void add_new_todo(char name[], char priority[]);
 void add_todos(t_todo task);
+void write_todo(t_todo task);
+void read_todos();
+void token_todos(char line[], t_todo task);
 
 #endif // TODO_H_INCLUDED

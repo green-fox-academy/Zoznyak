@@ -3,23 +3,24 @@
 #include "file.h"
 #include "todo.h"
 
-//t_todo todos[10];
-
 int main(int argc, char *argv[])
 {
     if (argc == 1){
-        read_file();
+        read_help();
     }
     if( argc == 2 ) {
         if (strcmp(argv[1], "-h") == 0){
-            read_file();
+            read_help();
         }
     }
 
     if( argc == 2 ) {
         if (strcmp(argv[1], "-l") == 0){
-            printf("-l mukodik");
-            printf("%s",todos[0].name);
+            read_todos();
+            printf("Array:\n");
+            printf("%d\n", todos[0].priority);
+            printf("%d\n", todos[1].priority);
+            printf("%d\n", todos[2].priority);
         }
     }
    if( argc == 4 ) {
@@ -43,5 +44,4 @@ int main(int argc, char *argv[])
         //read_file();
    }
     return 0;
-
 }

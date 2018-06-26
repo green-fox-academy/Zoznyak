@@ -2,7 +2,6 @@
 #define FILE_H_INCLUDED
 #include "todo.h"
 
-void read_file();
-void write_file(char text[],int priority, bool state);
+void read_help();
 
 #endif // FILE_H_INCLUDED
