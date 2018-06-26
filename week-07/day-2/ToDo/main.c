@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "file.h"
+#include "todo.h"
+
+t_todo todos[10];
 
 int main(int argc, char *argv[])
 {
@@ -12,10 +15,17 @@ int main(int argc, char *argv[])
         if (strcmp(argv[1], "-h") == 0){
             read_file();
         }
-   }
-   if( argc == 3 ) {
+    }
+    if( argc == 2 ) {
+        if (strcmp(argv[1], "-l") == 0){
+            printf("-l mukodik");
+            printf("%s",todos[0].name);
+        }
+    }
+   if( argc == 4 ) {
         if (strcmp(argv[1], "-a") == 0){
-            write_file(argv[2]);
+            add_new_todo(argv[2], argv[3]);
+            //write_file(argv[2]);
             //printf("%s", "First argument is -a");
         }
         if (strcmp(argv[1], "-l") == 0){
@@ -28,7 +38,7 @@ int main(int argc, char *argv[])
             printf("%s", "First argument is -c");
         }
    }
-   else if( argc > 3 ) {
+   else if( argc > 4 ) {
         printf("Too many arguments supplied.\n");
    }
    else {
