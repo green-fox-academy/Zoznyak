@@ -5,7 +5,8 @@
 	"file.h"
 	"todo.h"
 
-1530027524 d:\greenfox\zoznyak\week-07\day-2\todo\file.h
+1530028560 d:\greenfox\zoznyak\week-07\day-2\todo\file.h
+	"todo.h"
 
 1530016116 source:d:\greenfox\zoznyak\week-07\day-2\todo\file.c
 	<stdio.h>
@@ -14,7 +15,7 @@
 
 1530026992 d:\greenfox\zoznyak\week-07\day-2\todo\todo.h
 
-1530027524 source:d:\greenfox\zoznyak\week-07\day-2\todo\todo.c
+1530028539 source:d:\greenfox\zoznyak\week-07\day-2\todo\todo.c
 	<stdio.h>
 	"file.h"
 	"todo.h"

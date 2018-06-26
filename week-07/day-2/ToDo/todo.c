@@ -23,6 +23,6 @@ void add_todos(t_todo task)
             break;
         }
     }
-    write_file(task.name, task.priority);
+    write_file(task.name, task.priority, task.done);
 }
 

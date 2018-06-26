@@ -14,7 +14,7 @@ void read_file()
     fclose(fp);
 }
 
-void write_file(char text[], int priority)
+void write_file(char text[], int priority, bool state)
 {
     char line[50];
     FILE *fp;
@@ -23,7 +23,7 @@ void write_file(char text[], int priority)
         perror("Error opening file.");
     }
     else {
-        sprintf(line,"%d",priority);
+        sprintf(line,"%d""|""%d""|",priority,state);
         strcat(line," ");
         strcat(line,text);
         fprintf(fp, "%s\n", line);
