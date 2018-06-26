@@ -2,8 +2,6 @@
 #include "file.h"
 #include "todo.h"
 
-extern t_todo todos[10];
-
 void add_new_todo(char name[], char priority[])
 {
     t_todo new_todo;
@@ -11,7 +9,6 @@ void add_new_todo(char name[], char priority[])
     new_todo.priority = atoi(priority);
     new_todo.done = false;
     add_todos(new_todo);
-    //printf("%s", new_todo.name);
 }
 
 void add_todos(t_todo task)
@@ -26,7 +23,6 @@ void add_todos(t_todo task)
             break;
         }
     }
-    strcpy(todos[1].name, task.name);
-    printf("forutan%s", todos[1].name);
+    write_file(task.name, task.priority);
 }
 

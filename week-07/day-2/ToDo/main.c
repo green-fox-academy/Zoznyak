@@ -3,11 +3,10 @@
 #include "file.h"
 #include "todo.h"
 
-t_todo todos[10];
+//t_todo todos[10];
 
 int main(int argc, char *argv[])
 {
-    //printf("Program name %s\n", argv[0]);
     if (argc == 1){
         read_file();
     }
@@ -16,6 +15,7 @@ int main(int argc, char *argv[])
             read_file();
         }
     }
+
     if( argc == 2 ) {
         if (strcmp(argv[1], "-l") == 0){
             printf("-l mukodik");
@@ -25,8 +25,6 @@ int main(int argc, char *argv[])
    if( argc == 4 ) {
         if (strcmp(argv[1], "-a") == 0){
             add_new_todo(argv[2], argv[3]);
-            //write_file(argv[2]);
-            //printf("%s", "First argument is -a");
         }
         if (strcmp(argv[1], "-l") == 0){
             printf("%s", "First argument is -l");

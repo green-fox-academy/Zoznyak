@@ -14,15 +14,19 @@ void read_file()
     fclose(fp);
 }
 
-void write_file(char text[])
+void write_file(char text[], int priority)
 {
+    char line[50];
     FILE *fp;
     fp = fopen("todos.txt", "a");
     if(fp==NULL) {
         perror("Error opening file.");
     }
     else {
-        fprintf(fp, "%s\n", text);
+        sprintf(line,"%d",priority);
+        strcat(line," ");
+        strcat(line,text);
+        fprintf(fp, "%s\n", line);
         fclose(fp);
     }
 }

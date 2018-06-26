@@ -9,7 +9,7 @@ typedef struct{
     bool done;
 }t_todo;
 
-//t_todo todos[10];
+t_todo todos[10];
 
 void add_new_todo(char name[], char priority[]);
 void add_todos(t_todo task);
