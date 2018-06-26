@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1530010298 source:d:\greenfox\zoznyak\week-07\day-2\todo\main.c
+1530016520 source:d:\greenfox\zoznyak\week-07\day-2\todo\main.c
 	<stdio.h>
 	<stdlib.h>
 	"file.h"
 
-1530010245 d:\greenfox\zoznyak\week-07\day-2\todo\file.h
+1530015715 d:\greenfox\zoznyak\week-07\day-2\todo\file.h
 
 1530010337 source:d:\greenfox\zoznyak\week-07\day-2\todo\file.c
 	<stdio.h>
