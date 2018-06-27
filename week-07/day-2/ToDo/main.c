@@ -33,7 +33,9 @@ int main(int argc, char *argv[])
             write_todo_to_file();
         }
         if (strcmp(argv[1], "-c") == 0){
-            printf("%s", "First argument is -c");
+            check_task(argv[2]);
+            list_todos();
+            write_todo_to_file();
         }
    }
    if( argc == 5 ) {

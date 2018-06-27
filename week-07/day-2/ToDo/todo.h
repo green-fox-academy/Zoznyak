@@ -22,5 +22,6 @@ char checked(bool done);
 void remove_task(char index[]);
 void write_todo_to_file();
 int valid_values(int i);
+void check_task(char index[]);
 
 #endif // TODO_H_INCLUDED

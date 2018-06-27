@@ -121,7 +121,8 @@ void list_todos()
     for (i = 0; i < 20; i++){
         //if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
         if(valid_values(i) == 1 ){
-            printf("%d - [%c]\t\t%s \t\t\t\t\t\t%d\n",i + 1,checked(todos[i].done),todos[i].name,todos[i].priority);
+            printf("%d - [%c]\t\t %s",i + 1,checked(todos[i].done),todos[i].name);
+            printf("%d\n",todos[i].priority);
         }
     }
     printf("\n");
@@ -142,7 +143,7 @@ void remove_task(char index[])
     int i;
     int number = 0;
     t_todo temp_todos[20];
-    todos[atoi(index+1)].priority = 0;
+    todos[atoi(index)-1].priority = 0;
     for (i = 0; i < 20; i++){
         if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
             temp_todos[number] = todos[i];
@@ -182,5 +183,10 @@ int valid_values(int i)
         return 1;
     }
     else 0;
+}
+
+void check_task(char index[])
+{
+    todos[atoi(index)-1].done = true;
 }
 
