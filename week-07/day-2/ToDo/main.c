@@ -20,6 +20,11 @@ int main(int argc, char *argv[])
         if (strcmp(argv[1], "-l") == 0){
             clear_screen();
             list_todos();
+            printf("%s", todos[0].name);
+            printf("%s", todos[1].name);
+            printf("%s", todos[2].name);
+            printf("%s", todos[3].name);
+            printf("%s", todos[4].name);
         }
         else{
             printf("Not valid arguments!\n");

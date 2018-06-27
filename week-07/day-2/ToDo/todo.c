@@ -95,16 +95,21 @@ void list_todos()
     printf("Command Line Todo application\n");
     printf("=============================\n");
     printf("\n");
+    t_todo temp_todos[10];
     int i;
     int j;
-    int number = 1;
+    int number = 0;
     for (i = 3; i > 0; i--){
         for (j = 0; j < 10; j++){
             if (todos[j].priority == i){
-               printf("%d - [%c] %s",number,checked(todos[j].done),todos[j].name);
+               printf("%d - [%c] %s",number + 1,checked(todos[j].done),todos[j].name);
+               temp_todos[number] = todos[j];
                number++;
             }
         }
+    }
+    for (i = 0; i < 10; i++){
+        todos[i] = temp_todos[i];
     }
 }
 
