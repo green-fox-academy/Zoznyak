@@ -9,15 +9,16 @@ typedef struct{
     bool done;
 }t_todo;
 
-t_todo todos[10];
+t_todo todos[20];
 
 void add_new_todo(char name[], char priority[], char state[]);
 void add_todos(t_todo task);
-void write_todo(t_todo task);
+void add_todo_to_file(t_todo task);
 void read_todos();
 void token_todos(char line[], int i);
 void sort_todos(int length);
 void list_todos();
 char checked(bool done);
+void remove_task(char index[]);
 
 #endif // TODO_H_INCLUDED

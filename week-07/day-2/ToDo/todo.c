@@ -28,8 +28,8 @@ void add_new_todo(char name[], char priority[], char state[])
 void add_todos(t_todo task)
 {
     int i;
-    for (i = 0; i < 10; i++){
-        if (strlen(todos[i].name) == 0){
+    for (i = 0; i < 20; i++){
+        if (todos[i].priority != 0){     //(strlen(todos[i].priority) != 0){
             strcpy(todos[i].name, task.name);
             todos[i].priority = task.priority;
             todos[i].done = task.done;
@@ -37,10 +37,10 @@ void add_todos(t_todo task)
             break;
         }
     }
-    write_todo(task);
+    add_todo_to_file(task);
 }
 
-void write_todo(t_todo task)
+void add_todo_to_file(t_todo task)
 {
     char line[50];
     FILE *fp;
@@ -92,32 +92,33 @@ void read_todos()
 
 void sort_todos(int length)
 {
-    t_todo temp_todos[10];
+    t_todo temp_todos[20];
     int i;
     int j;
     int number = 0;
     for (i = 3; i > 0; i--){
-        for (j = 0; j < 10; j++){
+        for (j = 0; j < 20; j++){
             if (todos[j].priority == i){
                temp_todos[number] = todos[j];
                number++;
             }
         }
     }
-    for (i = 0; i < 10; i++){
+    for (i = 0; i < 20; i++){
         todos[i] = temp_todos[i];
     }
 }
 
 void list_todos()
 {
+    printf("\n");
     printf("Command Line Todo application\n");
     printf("=============================\n");
     printf("\n");
     printf("#  Status\t\tTask\t\t\tPriority\n");
     printf("\n");
     int i;
-    for (i = 0; i < 10; i++){
+    for (i = 0; i < 20; i++){
         if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
             printf("%d - [%c]\t\t%s \t\t\t\t\t\t%d\n",i + 1,checked(todos[i].done),todos[i].name,todos[i].priority);
         }
@@ -135,3 +136,8 @@ char checked(bool done)
     }
 }
 
+void remove_task(char index[])
+{
+    todos[atoi(index+1)].priority = 0;
+    list_todos();
+}

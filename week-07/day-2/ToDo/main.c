@@ -26,6 +26,15 @@ int main(int argc, char *argv[])
             printf("Not valid arguments!\n");
         }
     }
+    if( argc == 3 ) {
+        if (strcmp(argv[1], "-r") == 0){
+            //printf("%s", "First argument is -r");
+            remove_task(argv[2]);
+        }
+        if (strcmp(argv[1], "-c") == 0){
+            printf("%s", "First argument is -c");
+        }
+   }
    if( argc == 5 ) {
         if (strcmp(argv[1], "-a") == 0){
             add_new_todo(argv[2], argv[3], argv[4]);

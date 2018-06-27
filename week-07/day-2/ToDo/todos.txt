@@ -3,7 +3,4 @@
 3|0| kutya seta
 1|1| takaritas
 3|0| vasalas
-2|0| tanulas
-4|0| tokfoyelek
-3|0| megmutatni a progit
-3|0| megmutatni a progit
+3|0| meccs nezes

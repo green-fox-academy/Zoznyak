@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1530105509 source:d:\greenfox\zoznyak\week-07\day-2\todo\main.c
+1530107059 source:d:\greenfox\zoznyak\week-07\day-2\todo\main.c
 	<stdio.h>
 	<stdlib.h>
 	"file.h"
@@ -13,7 +13,7 @@
 	"file.h"
 	"todo.h"
 
-1530105509 d:\greenfox\zoznyak\week-07\day-2\todo\todo.h
+1530107793 d:\greenfox\zoznyak\week-07\day-2\todo\todo.h
 
 1530103381 source:d:\greenfox\zoznyak\week-07\day-2\todo\todo.c
 	<stdio.h>
