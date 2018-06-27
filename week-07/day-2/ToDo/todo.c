@@ -76,3 +76,16 @@ void read_todos()
     fclose(fp);
 }
 
+void list_todos()
+{
+    int i;
+    int j;
+    for (i = 3; i > 0; i--){
+        for (j = 0; j < 10; j++){
+            if (todos[j].priority == i){
+               printf("%d\n",todos[j].priority);
+            }
+        }
+    }
+}
+

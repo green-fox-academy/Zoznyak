@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     if( argc == 2 ) {
         if (strcmp(argv[1], "-l") == 0){
-
+            list_todos();
         }
     }
    if( argc == 4 ) {

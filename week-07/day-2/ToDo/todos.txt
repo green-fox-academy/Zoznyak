@@ -1,6 +1,6 @@
-4|1| vasarlas
-4|1| fozni vacsit
-4|0| kutya seta
+3|1| vasarlas
+3|1| fozni vacsit
+2|0| kutya seta
 1|0| takaritas
 2|0| vasalas
 
