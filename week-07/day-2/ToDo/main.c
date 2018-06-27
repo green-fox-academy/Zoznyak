@@ -4,11 +4,15 @@
 #include "todo.h"
 
 void clear_screen();
+void reload();
+void reset_array(t_todo todos[], int length);
 
 int main(int argc, char *argv[])
 {
+    int length = sizeof(todos)/sizeof(todos[0]);
+    reset_array(todos,length);
     read_todos();
-    sort_todos(10);
+    sort_todos(20);
     if (argc == 1){
         clear_screen();
         read_help();
@@ -29,18 +33,21 @@ int main(int argc, char *argv[])
     if( argc == 3 ) {
         if (strcmp(argv[1], "-r") == 0){
             remove_task(argv[2]);
-            list_todos();
-            write_todo_to_file();
+            reload();
         }
         if (strcmp(argv[1], "-c") == 0){
             check_task(argv[2]);
-            list_todos();
-            write_todo_to_file();
+            reload();
         }
    }
    if( argc == 5 ) {
         if (strcmp(argv[1], "-a") == 0){
             add_new_todo(argv[2], argv[3], argv[4]);
+            sort_todos(20);
+            write_todo_to_file();
+            clear_screen();
+            list_todos();
+            //reload();
         }
         if (strcmp(argv[1], "-r") == 0){
             printf("%s", "First argument is -r");
@@ -61,4 +68,20 @@ int main(int argc, char *argv[])
 void clear_screen()
 {
     system("@cls||clear");
+}
+
+void reload()
+{
+    sort_todos(20);
+    write_todo_to_file();
+    clear_screen();
+    list_todos();
+}
+
+void reset_array(t_todo todos[], int length)
+{
+    int i;
+    for (i = 0; i < length; i++){
+        todos[i].priority = 0;
+    }
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "file.h"
 #include "todo.h"
+#include <windows.h>
 
 void add_new_todo(char name[], char priority[], char state[])
 {
@@ -29,7 +30,8 @@ void add_todos(t_todo task)
 {
     int i;
     for (i = 0; i < 20; i++){
-        if (todos[i].priority != 0){     //(strlen(todos[i].priority) != 0){
+        //if (todos[i].priority != 0){
+        if(valid_values(i) != 1){
             strcpy(todos[i].name, task.name);
             todos[i].priority = task.priority;
             todos[i].done = task.done;
@@ -37,7 +39,7 @@ void add_todos(t_todo task)
             break;
         }
     }
-    add_todo_to_file(task);
+    //add_todo_to_file(task);
 }
 
 void add_todo_to_file(t_todo task)
@@ -61,6 +63,7 @@ void token_todos(char line[], int i)
 {
     char *p;
     int counter = 0;
+    int length;
     for (p = strtok(line, "|"); p != NULL; p = strtok(NULL, "|"))
     {
         counter++;
@@ -69,10 +72,13 @@ void token_todos(char line[], int i)
         }
         if ((atoi(p) == 1) && (counter == 2)){
             todos[i].done = true;
-
         }
         else if (atoi(p) == 0){
             strcpy(todos[i].name, p);
+            length = strlen(todos[i].name);
+            if(todos[i].name[length-1] == '\n'){
+                todos[i].name[length-1] ='\0';
+            }
         }
     }
 }
@@ -98,9 +104,11 @@ void sort_todos(int length)
     int number = 0;
     for (i = 3; i > 0; i--){
         for (j = 0; j < 20; j++){
-            if (todos[j].priority == i){
-               temp_todos[number] = todos[j];
-               number++;
+            if(valid_values(j) == 1){
+                if (todos[j].priority == i){
+                    temp_todos[number] = todos[j];
+                    number++;
+                }
             }
         }
     }
@@ -112,17 +120,21 @@ void sort_todos(int length)
 void list_todos()
 {
     printf("\n");
-    printf("Command Line Todo application\n");
-    printf("=============================\n");
+    printf("\t\tCommand Line Todo application\n");
+    printf("\t\t=============================\n");
     printf("\n");
-    printf("#  Status\t\tTask\t\t\tPriority\n");
+    printf("#   Status\t\tTask\t\t\tPriority\n");
     printf("\n");
     int i;
+    int y_coord = 6;
     for (i = 0; i < 20; i++){
-        //if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
-        if(valid_values(i) == 1 ){
-            printf("%d - [%c]\t\t %s",i + 1,checked(todos[i].done),todos[i].name);
+        if(valid_values(i) == 1){
+            printf("%d",i + 1);
+            set_cursor_pos(2, y_coord);
+            printf(" - [%c]\t %s",checked(todos[i].done),todos[i].name);
+            set_cursor_pos(51, y_coord);
             printf("%d\n",todos[i].priority);
+            y_coord++;
         }
     }
     printf("\n");
@@ -145,7 +157,8 @@ void remove_task(char index[])
     t_todo temp_todos[20];
     todos[atoi(index)-1].priority = 0;
     for (i = 0; i < 20; i++){
-        if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
+        //if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
+        if(valid_values(i) == 1){      //==1!!!!!
             temp_todos[number] = todos[i];
             number++;
         }
@@ -166,11 +179,11 @@ void write_todo_to_file()
     }
     else {
         for (i = 0; i < 20; i++){
-            if(valid_values(i) == 1 ){
+            if(valid_values(i) == 1){
                 sprintf(line,"%d""|""%d""|",todos[i].priority,todos[i].done);
-                strcat(line," ");
+                //strcat(line," ");
                 strcat(line,todos[i].name);
-                fprintf(fp, "%s", line);
+                fprintf(fp, "%s\n", line);
             }
         }
     fclose(fp);
@@ -188,5 +201,13 @@ int valid_values(int i)
 void check_task(char index[])
 {
     todos[atoi(index)-1].done = true;
+}
+
+void set_cursor_pos(int x, int y)
+{
+    COORD coord = {0,0};
+	coord.X = x;
+	coord.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
