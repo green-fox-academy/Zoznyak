@@ -20,5 +20,7 @@ void sort_todos(int length);
 void list_todos();
 char checked(bool done);
 void remove_task(char index[]);
+void write_todo_to_file();
+int valid_values(int i);
 
 #endif // TODO_H_INCLUDED

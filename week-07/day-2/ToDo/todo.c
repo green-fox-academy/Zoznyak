@@ -119,7 +119,8 @@ void list_todos()
     printf("\n");
     int i;
     for (i = 0; i < 20; i++){
-        if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
+        //if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
+        if(valid_values(i) == 1 ){
             printf("%d - [%c]\t\t%s \t\t\t\t\t\t%d\n",i + 1,checked(todos[i].done),todos[i].name,todos[i].priority);
         }
     }
@@ -138,6 +139,48 @@ char checked(bool done)
 
 void remove_task(char index[])
 {
+    int i;
+    int number = 0;
+    t_todo temp_todos[20];
     todos[atoi(index+1)].priority = 0;
-    list_todos();
+    for (i = 0; i < 20; i++){
+        if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
+            temp_todos[number] = todos[i];
+            number++;
+        }
+    }
+    for (i = 0; i < 20; i++){
+        todos[i] = temp_todos[i];
+    }
 }
+
+void write_todo_to_file()
+{
+    int i;
+    char line[50];
+    FILE *fp;
+    fp = fopen("todos.txt", "w");
+    if(fp == NULL) {
+        perror("Error opening file.");
+    }
+    else {
+        for (i = 0; i < 20; i++){
+            if(valid_values(i) == 1 ){
+                sprintf(line,"%d""|""%d""|",todos[i].priority,todos[i].done);
+                strcat(line," ");
+                strcat(line,todos[i].name);
+                fprintf(fp, "%s", line);
+            }
+        }
+    fclose(fp);
+    }
+}
+
+int valid_values(int i)
+{
+    if((todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3) && (todos[i].done == false || todos[i].done == true)){
+        return 1;
+    }
+    else 0;
+}
+

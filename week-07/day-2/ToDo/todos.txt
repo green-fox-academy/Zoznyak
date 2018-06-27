@@ -1,6 +1,1 @@
-1|1| vasarlas
-1|1| fozni vacsit
-3|0| kutya seta
-1|1| takaritas
-3|0| vasalas
-3|0| meccs nezes
+1|0|     takaritas
