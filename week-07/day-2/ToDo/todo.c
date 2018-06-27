@@ -2,13 +2,27 @@
 #include "file.h"
 #include "todo.h"
 
-void add_new_todo(char name[], char priority[])
+void add_new_todo(char name[], char priority[], char state[])
 {
-    t_todo new_todo;
-    strcpy(new_todo.name, name);
-    new_todo.priority = atoi(priority);
-    new_todo.done = false;
-    add_todos(new_todo);
+    if (atoi(priority) > 0 && atoi(priority) < 4){
+        t_todo new_todo;
+        strcpy(new_todo.name, name);
+        new_todo.priority = atoi(priority);
+        if (atoi(state) == 1){
+            new_todo.done = true;
+            add_todos(new_todo);
+        }
+        if (atoi(state) == 0){
+            new_todo.done = false;
+            add_todos(new_todo);
+        }
+        else if (atoi(state) < 0 || atoi(state) > 1) {
+            printf("State must be either 1 or 0");
+        }
+    }
+    else{
+        printf("Use priority 1-3!");
+    }
 }
 
 void add_todos(t_todo task)
@@ -19,7 +33,7 @@ void add_todos(t_todo task)
             strcpy(todos[i].name, task.name);
             todos[i].priority = task.priority;
             todos[i].done = task.done;
-            printf("%s", todos[i].name);
+            printf("You have added task: \"%s\", with priority: %i, and state: %i\n", todos[i].name, todos[i].priority, todos[i].done);
             break;
         }
     }

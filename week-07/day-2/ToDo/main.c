@@ -21,14 +21,13 @@ int main(int argc, char *argv[])
             clear_screen();
             list_todos();
         }
+        else{
+            printf("Not valid arguments!\n");
+        }
     }
-
-    if( argc == 2 ) {
-
-    }
-   if( argc == 4 ) {
+   if( argc == 5 ) {
         if (strcmp(argv[1], "-a") == 0){
-            add_new_todo(argv[2], argv[3]);
+            add_new_todo(argv[2], argv[3], argv[4]);
         }
         if (strcmp(argv[1], "-r") == 0){
             printf("%s", "First argument is -r");
@@ -37,7 +36,7 @@ int main(int argc, char *argv[])
             printf("%s", "First argument is -c");
         }
    }
-   else if( argc > 4 ) {
+   else if( argc > 5 ) {
         printf("Too many arguments supplied.\n");
    }
    else {

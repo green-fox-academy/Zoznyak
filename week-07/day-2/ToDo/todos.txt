@@ -4,3 +4,7 @@
 1|1| takaritas
 2|0| vasalas
 3|0| tanulas
+4|0| tokfoyelek
+3|1| lama etetes
+3|0| lama etetes
+3|1| lama etetes
