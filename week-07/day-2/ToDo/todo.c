@@ -50,15 +50,15 @@ void token_todos(char line[], int i)
     for (p = strtok(line, "|"); p != NULL; p = strtok(NULL, "|"))
     {
         counter++;
-        if ((atoi(p) > 0) && (counter == 1))
-        {
+        if ((atoi(p) > 0) && (counter == 1)){
             todos[i].priority = atoi(p);
         }
-
-        if ((atoi(p) == 1) && (counter == 2))
-        {
+        if ((atoi(p) == 1) && (counter == 2)){
             todos[i].done = true;
 
+        }
+        else if (atoi(p) == 0){
+            strcpy(todos[i].name, p);
         }
     }
 }
@@ -80,12 +80,24 @@ void list_todos()
 {
     int i;
     int j;
+    int number = 1;
     for (i = 3; i > 0; i--){
         for (j = 0; j < 10; j++){
             if (todos[j].priority == i){
-               printf("%d\n",todos[j].priority);
+               printf("%d. [%c] %s",number,checked(todos[j].done),todos[j].name);
+               number++;
             }
         }
+    }
+}
+
+char checked(bool done)
+{
+    if (done == true){
+        return 'X';
+    }
+    else{
+        return ' ';
     }
 }
 

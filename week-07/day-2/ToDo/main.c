@@ -24,9 +24,6 @@ int main(int argc, char *argv[])
         if (strcmp(argv[1], "-a") == 0){
             add_new_todo(argv[2], argv[3]);
         }
-        if (strcmp(argv[1], "-l") == 0){
-            printf("%s", "First argument is -l");
-        }
         if (strcmp(argv[1], "-r") == 0){
             printf("%s", "First argument is -r");
         }
