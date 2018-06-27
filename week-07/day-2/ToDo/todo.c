@@ -90,11 +90,8 @@ void read_todos()
     fclose(fp);
 }
 
-void list_todos()
+void sort_todos(int length)
 {
-    printf("Command Line Todo application\n");
-    printf("=============================\n");
-    printf("\n");
     t_todo temp_todos[10];
     int i;
     int j;
@@ -102,7 +99,6 @@ void list_todos()
     for (i = 3; i > 0; i--){
         for (j = 0; j < 10; j++){
             if (todos[j].priority == i){
-               printf("%d - [%c] %s",number + 1,checked(todos[j].done),todos[j].name);
                temp_todos[number] = todos[j];
                number++;
             }
@@ -111,6 +107,22 @@ void list_todos()
     for (i = 0; i < 10; i++){
         todos[i] = temp_todos[i];
     }
+}
+
+void list_todos()
+{
+    printf("Command Line Todo application\n");
+    printf("=============================\n");
+    printf("\n");
+    printf("#  Status\t\tTask\t\t\tPriority\n");
+    printf("\n");
+    int i;
+    for (i = 0; i < 10; i++){
+        if(todos[i].priority == 1 || todos[i].priority == 2 || todos[i].priority == 3 ){
+            printf("%d - [%c]\t\t%s \t\t\t\t\t\t%d\n",i + 1,checked(todos[i].done),todos[i].name,todos[i].priority);
+        }
+    }
+    printf("\n");
 }
 
 char checked(bool done)

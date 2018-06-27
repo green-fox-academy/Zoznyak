@@ -16,6 +16,7 @@ void add_todos(t_todo task);
 void write_todo(t_todo task);
 void read_todos();
 void token_todos(char line[], int i);
+void sort_todos(int length);
 void list_todos();
 char checked(bool done);
 

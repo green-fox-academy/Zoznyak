@@ -8,6 +8,7 @@ void clear_screen();
 int main(int argc, char *argv[])
 {
     read_todos();
+    sort_todos(10);
     if (argc == 1){
         clear_screen();
         read_help();
@@ -20,11 +21,6 @@ int main(int argc, char *argv[])
         if (strcmp(argv[1], "-l") == 0){
             clear_screen();
             list_todos();
-            printf("%s", todos[0].name);
-            printf("%s", todos[1].name);
-            printf("%s", todos[2].name);
-            printf("%s", todos[3].name);
-            printf("%s", todos[4].name);
         }
         else{
             printf("Not valid arguments!\n");
