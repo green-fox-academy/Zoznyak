@@ -78,13 +78,16 @@ void read_todos()
 
 void list_todos()
 {
+    printf("Command Line Todo application\n");
+    printf("=============================\n");
+    printf("\n");
     int i;
     int j;
     int number = 1;
     for (i = 3; i > 0; i--){
         for (j = 0; j < 10; j++){
             if (todos[j].priority == i){
-               printf("%d. [%c] %s",number,checked(todos[j].done),todos[j].name);
+               printf("%d - [%c] %s",number,checked(todos[j].done),todos[j].name);
                number++;
             }
         }
