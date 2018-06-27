@@ -31,7 +31,7 @@ void write_todo(t_todo task)
     char line[50];
     FILE *fp;
     fp = fopen("todos.txt", "a");
-    if(fp==NULL) {
+    if(fp == NULL) {
         perror("Error opening file.");
     }
     else {
@@ -46,16 +46,19 @@ void write_todo(t_todo task)
 void token_todos(char line[], int i)
 {
     char *p;
+    int counter = 0;
     for (p = strtok(line, "|"); p != NULL; p = strtok(NULL, "|"))
     {
-        if ((atoi(p) > 0) && (todos[i].priority == 0))
+        counter++;
+        if ((atoi(p) > 0) && (counter == 1))
         {
             todos[i].priority = atoi(p);
         }
 
-        if ((atoi(p) > 0) && (todos[i].priority != 0))
+        if ((atoi(p) == 1) && (counter == 2))
         {
-            todos[i].done = atoi(p);
+            todos[i].done = true;
+
         }
     }
 }
@@ -63,14 +66,12 @@ void token_todos(char line[], int i)
 void read_todos()
 {
     char textLine[50];
-    int i;
+    int i = 0;
     FILE *fp;
     fp = fopen("todos.txt", "r");
-    for (i = 0; i < 10; i++){
-        while (fgets(textLine, 80, fp) != NULL){
-            printf("%s", textLine);
-            token_todos(textLine, i);
-        }
+    while (fgets(textLine, 80, fp) != NULL){
+        token_todos(textLine, i);
+        i++;
     }
     fclose(fp);
 }

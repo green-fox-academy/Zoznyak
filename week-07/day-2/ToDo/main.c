@@ -5,6 +5,7 @@
 
 int main(int argc, char *argv[])
 {
+    read_todos();
     if (argc == 1){
         read_help();
     }
@@ -16,11 +17,7 @@ int main(int argc, char *argv[])
 
     if( argc == 2 ) {
         if (strcmp(argv[1], "-l") == 0){
-            read_todos();
-            printf("Array:\n");
-            printf("%d\n", todos[0].priority);
-            printf("%d\n", todos[1].priority);
-            printf("%d\n", todos[2].priority);
+
         }
     }
    if( argc == 4 ) {
