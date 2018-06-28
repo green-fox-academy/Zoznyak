@@ -30,6 +30,8 @@ int get_port_name()
 	} else {
 		printf("%s port exists, saved.\n", port_name);
 	}
+	printf("\n");
+    printf("Press \"h\" to go back or \"e\" to exit...");
 
 	return 0;
 }
@@ -50,6 +52,8 @@ int open_port()
 		printf("Port opened successfully!\n");
 		return 0;
 	}
+	printf("\n");
+    printf("Press \"h\" to go back or \"e\" to exit...");
 }
 
 int close_port()
@@ -62,6 +66,8 @@ int close_port()
 
 	comClose(parser_port);
 	printf("Port closed.\n");
+	printf("\n");
+    printf("Press \"h\" to go back or \"e\" to exit...");
 	return 0;
 }
 

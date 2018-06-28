@@ -38,6 +38,8 @@ void print_port_list()
 		for (int i = 0; i < port_count; i++)
 			printf("%d. - %s\n", i + 1, comGetPortName(i));
 	}
+	printf("\n");
+    printf("Press \"h\" to go back or \"e\" to exit...");
 }
 
 void print_log()
@@ -55,13 +57,13 @@ void print_log()
             printf("%i.%i.%i", logs.year, logs.month, logs.day);
             offset_text(13 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
             printf("%i:%i:%i", logs.hour, logs.minute, logs.second);
-            offset_text(15 - ((1 + (int)log10(logs.hour)) + (1 + (int)log10(logs.minute)) + (1 + (int)log10(logs.second))));
+            offset_text(14 - ((1 + (int)log10(logs.hour)) + (1 + (int)log10(logs.minute)) + (1 + (int)log10(logs.second))));
             printf("%i\n", logs.temperature);
         }
     }
     fclose(fp);
     printf("\n");
-    printf("Press \"h\" to go back...");
+    printf("Press \"h\" to go back or \"e\" to exit...");
 }
 
 int validate_line(char text[], t_log *logs)
@@ -115,7 +117,7 @@ int token_line(char text[], t_log **logs)
         else if(number == 6 && (atoi(p)) > -273){
             valid_arg_min = -273;
             valid_arg_max = 1000;
-            if((strlen(p) != 1 && (atoi(p)) != 0) || (strlen(p) == 1 && isdigit(atoi(p)) == 1)){
+            if((strlen(p) != 1 && (atoi(p)) != 0) || (strlen(p) == 2 && isdigit(p[0]) == 1)){
                 (*(*logs)).temperature = atoi(p);
             }
             else{
