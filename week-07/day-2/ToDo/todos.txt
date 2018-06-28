@@ -1,4 +1,10 @@
 3|0|Kutya etetes
-2|0|Vasarlas
-1|0|Takaritas
-2|1|Ó@
+3|0|Vacsora fozes
+3|0|Vasalas
+3|0|Proba
+3|0|Proba
+3|0|Proba
+3|0|Proba
+2|1|Vasarlas
+1|0|Ajandek vasarlas
+1|0|Tanulas

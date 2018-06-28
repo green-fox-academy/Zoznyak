@@ -5,7 +5,7 @@ typedef enum {false, true}bool;
 
 typedef struct{
     char name[100];
-    int priority; //1-5
+    int priority; //1-3
     bool done;
 }t_todo;
 
@@ -13,7 +13,6 @@ t_todo todos[20];
 
 void add_new_todo(char name[], char priority[], char state[]);
 void add_todos(t_todo task);
-void add_todo_to_file(t_todo task);
 void read_todos();
 void token_todos(char line[], int i);
 void sort_todos(int length);
