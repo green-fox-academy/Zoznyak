@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <windows.h>
+#include <math.h>
 #include "printer.h"
 #include "rs232/rs232.h"
 
@@ -41,13 +43,90 @@ void print_port_list()
 void print_log()
 {
     char textLine[50];
+    char temp[50];
+    t_log logs;
     FILE *fp;
     fp = fopen("log.txt", "r");
     printf("\n");
-    while (fgets(textLine, 80, fp) != NULL){
-        printf("%s", textLine);
+    while (fgets(textLine, 50, fp) != NULL){
+        strcpy(temp, textLine);
+        if (validate_line(temp, &logs) == 1){
+            printf("%i.%i.%i", logs.year, logs.month, logs.day);
+            offset_text(10 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
+            printf("%i:%i:%i\n", logs.hour, logs.minute, logs.second);
+        }
     }
     fclose(fp);
+}
+
+int validate_line(char text[], t_log *logs)
+{
+    if(token_line(text, &logs) == 1){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int token_line(char text[], t_log **logs)
+{
+    char *p;
+    int number = 0;
+    int valid_arg;
+    //char *pdate;
+    for (p = strtok(text, ".: "); p != NULL; p = strtok(NULL, ".: ")){
+        if(number == 0){
+            valid_arg = 2019;
+            (*(*logs)).year = atoi(p);
+        }
+        else if(number == 1){
+            valid_arg = 13;
+            (*(*logs)).month = atoi(p);
+        }
+        else if(number == 2){
+            valid_arg = 32;
+            (*(*logs)).day = atoi(p);
+        }
+        else if(number == 3){
+            valid_arg = 24;
+            (*(*logs)).hour = atoi(p);
+        }
+        else if(number == 4){
+            valid_arg = 60;
+            (*(*logs)).minute = atoi(p);
+        }
+        else if(number == 5){
+            valid_arg = 60;
+            (*(*logs)).second = atoi(p);
+        }
+        if (atoi(p) > 0 && atoi(p) < valid_arg){
+            number++;
+            }
+
+    }
+    if (number == 6 || number == 7){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+void offset_text(int number)
+{
+    int i;
+    for(i = 0; i < number; i++){
+        printf(" ");
+    }
+}
+
+void set_cursor_pos(int x, int y)
+{
+    COORD coord = {0,0};
+	coord.X = x;
+	coord.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
 
