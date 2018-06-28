@@ -30,7 +30,7 @@ void add_todos(t_todo task)
 {
     int i;
     for (i = 0; i < 20; i++){
-        if(!valid_values(i)){
+        if(valid_values(i) != 1){
             strcpy(todos[i].name, task.name);
             todos[i].priority = task.priority;
             todos[i].done = task.done;
@@ -85,7 +85,7 @@ void sort_todos(int length)
     int number = 0;
     for (i = 3; i > 0; i--){
         for (j = 0; j < 20; j++){
-            if(valid_values(j)){
+            if(valid_values(j) == 1){
                 if (todos[j].priority == i){
                     temp_todos[number] = todos[j];
                     number++;
@@ -109,7 +109,7 @@ void list_todos()
     int i;
     int y_coord = 6;
     for (i = 0; i < 20; i++){
-        if(valid_values(i)){
+        if(valid_values(i) == 1){
             printf("%d",i + 1);
             set_cursor_pos(2, y_coord);
             printf(" - [%c]\t %s",checked(todos[i].done),todos[i].name);
@@ -138,7 +138,7 @@ void remove_task(char index[])
     t_todo temp_todos[20];
     todos[atoi(index)-1].priority = 0;
     for (i = 0; i < 20; i++){
-        if(valid_values(i)){      //==1!!!!!
+        if(valid_values(i) == 1){      //==1!!!!!
             temp_todos[number] = todos[i];
             number++;
         }
@@ -159,7 +159,7 @@ void write_todo_to_file()
     }
     else {
         for (i = 0; i < 20; i++){
-            if(valid_values(i)){
+            if(valid_values(i) == 1){
                 sprintf(line,"%d""|""%d""|",todos[i].priority,todos[i].done);
                 strcat(line,todos[i].name);
                 fprintf(fp, "%s\n", line);

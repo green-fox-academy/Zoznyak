@@ -1,10 +1,7 @@
 3|0|Kutya etetes
 3|0|Vacsora fozes
-3|0|Vasalas
-3|0|Proba
-3|0|Proba
-3|0|Proba
-3|0|Proba
-2|1|Vasarlas
+3|0|Kutya setlatatas
+3|0|Uszas
+2|0|Vasarlas
 1|0|Ajandek vasarlas
 1|0|Tanulas
