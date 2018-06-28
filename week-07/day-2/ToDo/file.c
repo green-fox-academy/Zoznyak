@@ -4,7 +4,7 @@
 
 void read_help()
 {
-    char textLine[50];
+    char textLine[80];
     FILE *fp;
     fp = fopen("help.txt", "r");
     printf("\n");

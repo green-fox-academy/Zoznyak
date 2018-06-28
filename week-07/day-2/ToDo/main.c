@@ -17,43 +17,36 @@ int main(int argc, char *argv[])
         clear_screen();
         read_help();
     }
-    if( argc == 2 ) {
-        if (strcmp(argv[1], "-h") == 0){
-            clear_screen();
-            read_help();
-        }
-        if (strcmp(argv[1], "-l") == 0){
-            clear_screen();
-            list_todos();
-        }
-        else{
-            printf("Not valid arguments!\n");
-        }
+    else if( argc == 2 ) {
+            if (strcmp(argv[1], "-h") == 0){
+                clear_screen();
+                read_help();
+            }
+            else if (strcmp(argv[1], "-l") == 0){
+                clear_screen();
+                list_todos();
+            }
+            else{
+                printf("No valid arguments!\n");
+            }
     }
-    if( argc == 3 ) {
-        if (strcmp(argv[1], "-r") == 0){
-            remove_task(argv[2]);
-            reload();
-        }
-        if (strcmp(argv[1], "-c") == 0){
-            check_task(argv[2]);
-            reload();
-        }
+    else if( argc == 3 ) {
+            if (strcmp(argv[1], "-r") == 0){
+                remove_task(argv[2]);
+                reload();
+            }
+            else if (strcmp(argv[1], "-c") == 0){
+                check_task(argv[2]);
+                reload();
+            }
+            else{
+                printf("No valid arguments!\n");
+            }
    }
    if( argc == 5 ) {
         if (strcmp(argv[1], "-a") == 0){
             add_new_todo(argv[2], argv[3], argv[4]);
-            sort_todos(20);
-            write_todo_to_file();
-            clear_screen();
-            list_todos();
-            //reload();
-        }
-        if (strcmp(argv[1], "-r") == 0){
-            printf("%s", "First argument is -r");
-        }
-        if (strcmp(argv[1], "-c") == 0){
-            printf("%s", "First argument is -c");
+            reload();
         }
    }
    else if( argc > 5 ) {
