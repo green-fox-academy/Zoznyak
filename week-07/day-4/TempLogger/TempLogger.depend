@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1519901589 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"rs232/rs232.h"
+	"printer.h"
+	"parser.h"
+
+1518448099 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\rs232\rs232.h
+	<stdint.h>
+	<stdlib.h>
+
+1518448099 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
+
+1530181506 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.h
+
+1519901587 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.c
+	<stdio.h>
+	<time.h>
+	"rs232/rs232.h"
+	"parser.h"
+	"printer.h"
+	"string.h"
+
+1519893318 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
+	<stdio.h>
+	<string.h>
+	"printer.h"
+	"rs232/rs232.h"
+
+1518448099 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\rs232\rs232-linux.c
+	"rs232.h"
+	<unistd.h>
+	<termios.h>
+	<fcntl.h>
+	<dirent.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1518448099 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\rs232\rs232-win.c
+	"rs232.h"
+	<stdio.h>
+	<string.h>
+

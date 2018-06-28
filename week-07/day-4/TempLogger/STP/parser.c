@@ -113,9 +113,19 @@ int log_data()
 	char buff[PORT_BUFFER_LEN];
 	if (get_line_from_port(buff, PORT_BUFFER_LEN) > 0) {
 		// Put the data into the logfile
+		log_to_file(buff);
         //Printing the buffer
-		printf("%s\n",buff);
+		//printf("%s\n",buff);
 	}
 
 	return 0;
+}
+
+void log_to_file(char buff[])
+{
+    FILE *fp;
+    fp = fopen("log.txt", "a");
+    fputs(buff, fp);
+    fputs("\n",fp);
+    fclose(fp);
 }

@@ -9,5 +9,6 @@ int get_port_name();
 int open_port();
 int close_port();
 int log_data();
+void log_to_file(char buff[]);
 
 #endif // PARSER_H_INCLUDED
