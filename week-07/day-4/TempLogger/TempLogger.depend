@@ -23,10 +23,11 @@
 	"printer.h"
 	"string.h"
 
-1530196594 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
+1530198842 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
 	<stdio.h>
 	<string.h>
 	<math.h>
+	<ctype.h>
 	"printer.h"
 	"rs232/rs232.h"
 

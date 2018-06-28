@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 #include "printer.h"
 #include "rs232/rs232.h"
 
@@ -77,43 +78,56 @@ int token_line(char text[], t_log **logs)
 {
     char *p;
     int number = 0;
-    int valid_arg;
+    int valid = 1;
+    int valid_arg_min;
+    int valid_arg_max;
     for (p = strtok(text, ".: "); p != NULL; p = strtok(NULL, ".: ")){
         if(number == 0){
-            valid_arg = 2019;
+            valid_arg_min = 0;
+            valid_arg_max = 2019;
             (*(*logs)).year = atoi(p);
         }
         else if(number == 1){
-            valid_arg = 13;
+            valid_arg_min = 0;
+            valid_arg_max = 13;
             (*(*logs)).month = atoi(p);
         }
         else if(number == 2){
-            valid_arg = 32;
+            valid_arg_min = 0;
+            valid_arg_max = 32;
             (*(*logs)).day = atoi(p);
         }
         else if(number == 3){
-            valid_arg = 24;
+            valid_arg_min = 0;
+            valid_arg_max = 24;
             (*(*logs)).hour = atoi(p);
         }
         else if(number == 4){
-            valid_arg = 60;
+            valid_arg_min = 0;
+            valid_arg_max = 60;
             (*(*logs)).minute = atoi(p);
         }
         else if(number == 5){
-            valid_arg = 60;
+            valid_arg_min = 0;
+            valid_arg_max = 60;
             (*(*logs)).second = atoi(p);
         }
         else if(number == 6 && (atoi(p)) > -273){
-            valid_arg = 100;
-            (*(*logs)).temperature = atoi(p);
+            valid_arg_min = -273;
+            valid_arg_max = 1000;
+            if((strlen(p) != 1 && (atoi(p)) != 0) || (strlen(p) == 1 && isdigit(atoi(p)) == 1)){
+                (*(*logs)).temperature = atoi(p);
+            }
+            else{
+                valid = 0;
+            }
         }
-        if (atoi(p) > 0 && atoi(p) < valid_arg){
+        if (atoi(p) > valid_arg_min && atoi(p) < valid_arg_max && valid == 1){
             number++;
             }
 
     }
-    if (number == 6 || number == 7){
-    //if (number == 6){
+    if (number == 7){
         return 1;
     }
     else {
