@@ -78,7 +78,6 @@ int token_line(char text[], t_log **logs)
     char *p;
     int number = 0;
     int valid_arg;
-    //char *pdate;
     for (p = strtok(text, ".: "); p != NULL; p = strtok(NULL, ".: ")){
         if(number == 0){
             valid_arg = 2019;
@@ -104,8 +103,7 @@ int token_line(char text[], t_log **logs)
             valid_arg = 60;
             (*(*logs)).second = atoi(p);
         }
-        else if(number == 6 && (atoi(p)) > 0){
-            //printf("%i", atoi(p));
+        else if(number == 6 && (atoi(p)) > -273){
             valid_arg = 100;
             (*(*logs)).temperature = atoi(p);
         }
@@ -115,6 +113,7 @@ int token_line(char text[], t_log **logs)
 
     }
     if (number == 6 || number == 7){
+    //if (number == 6){
         return 1;
     }
     else {
