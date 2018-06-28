@@ -36,6 +36,9 @@ int main()
 					printf("Logging started\n");
 				}
 				break;
+            case 'k':
+				print_log();
+				break;
 			case 'c':
 				close_port();
 				break;

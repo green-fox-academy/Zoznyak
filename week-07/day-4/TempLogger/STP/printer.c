@@ -14,6 +14,7 @@ void print_startup_message()
 	printf(" p      Set port name\n");
 	printf(" o      Open port\n");
 	printf(" s      Start logging / Stop logging\n");
+	printf(" k      List logged data\n");
 	printf(" c      Close port\n");
     printf(" e      Exit from the program\n");
 }
@@ -36,3 +37,17 @@ void print_port_list()
 			printf("%d. - %s\n", i + 1, comGetPortName(i));
 	}
 }
+
+void print_log()
+{
+    char textLine[50];
+    FILE *fp;
+    fp = fopen("log.txt", "r");
+    printf("\n");
+    while (fgets(textLine, 80, fp) != NULL){
+        printf("%s", textLine);
+    }
+    fclose(fp);
+}
+
+
