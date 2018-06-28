@@ -37,7 +37,7 @@ int main()
 				}
 				break;
             case 'k':
-                //clear_screen();
+                clear_screen();
 				print_log();
 				break;
 			case 'c':

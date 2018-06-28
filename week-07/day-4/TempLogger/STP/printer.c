@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <windows.h>
 #include <math.h>
 #include "printer.h"
 #include "rs232/rs232.h"
@@ -47,16 +46,21 @@ void print_log()
     t_log logs;
     FILE *fp;
     fp = fopen("log.txt", "r");
-    printf("\n");
+    printf("  Date\t\tTime\t   Temperature\n");
+	printf("======================================\n");
     while (fgets(textLine, 50, fp) != NULL){
         strcpy(temp, textLine);
         if (validate_line(temp, &logs) == 1){
             printf("%i.%i.%i", logs.year, logs.month, logs.day);
-            offset_text(10 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
-            printf("%i:%i:%i\n", logs.hour, logs.minute, logs.second);
+            offset_text(13 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
+            printf("%i:%i:%i", logs.hour, logs.minute, logs.second);
+            offset_text(15 - ((1 + (int)log10(logs.hour)) + (1 + (int)log10(logs.minute)) + (1 + (int)log10(logs.second))));
+            printf("%i\n", logs.temperature);
         }
     }
     fclose(fp);
+    printf("\n");
+    printf("Press \"h\" to go back...");
 }
 
 int validate_line(char text[], t_log *logs)
@@ -100,6 +104,11 @@ int token_line(char text[], t_log **logs)
             valid_arg = 60;
             (*(*logs)).second = atoi(p);
         }
+        else if(number == 6 && (atoi(p)) > 0){
+            //printf("%i", atoi(p));
+            valid_arg = 100;
+            (*(*logs)).temperature = atoi(p);
+        }
         if (atoi(p) > 0 && atoi(p) < valid_arg){
             number++;
             }
@@ -119,14 +128,6 @@ void offset_text(int number)
     for(i = 0; i < number; i++){
         printf(" ");
     }
-}
-
-void set_cursor_pos(int x, int y)
-{
-    COORD coord = {0,0};
-	coord.X = x;
-	coord.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
 
