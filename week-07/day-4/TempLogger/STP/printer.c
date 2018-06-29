@@ -25,7 +25,6 @@ void print_startup_message()
 void print_daily_avarage_message()
 {
     clear_screen();
-	//printf("Temperature Logger Application\n");
 	printf("Avarage temperature handling by days\n");
 	printf("====================================\n");
 	printf("Commands:\n");
@@ -57,33 +56,37 @@ void print_port_list()
 
 void print_log()
 {
-    char textLine[50];
-    char temp[50];
-    t_log logs;
-    t_log all_log[100];
-    int index = 0;
-    FILE *fp;
-    fp = fopen("log.txt", "r");
+    int i = 0;
     printf("  Date\t\tTime\t   Temperature\n");
 	printf("======================================\n");
-    while (fgets(textLine, 50, fp) != NULL){
-        strcpy(temp, textLine);
-        if (token_line(temp, &logs) == 1){
-                add_valid_log(logs, all_log, &index);
-                printf("%i.%i.%i\n",all_log[index-1].year,all_log[index-1].month,all_log[index-1].day);
-            //printf("%i.%i.%i", logs.year, logs.month, logs.day);
-            //offset_text(13 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
-            //printf("%i:%i:%i", logs.hour, logs.minute, logs.second);
-            //offset_text(14 - ((1 + (int)log10(logs.hour)) + (1 + (int)log10(logs.minute)) + (1 + (int)log10(logs.second))));
-            //printf("%i\n", atoi(logs.temperature));
-
-        }
+    while ((1 + (int)log10(all_log[i].year)) == 4){
+        printf("%i.%i.%i", all_log[i].year, all_log[i].month, all_log[i].day);
+        offset_text(13 - ((1 + (int)log10(all_log[i].year)) + (1 + (int)log10(all_log[i].month)) + (1 + (int)log10(all_log[i].day))));
+        printf("%i:%i:%i", all_log[i].hour, all_log[i].minute, all_log[i].second);
+        offset_text(14 - ((1 + (int)log10(all_log[i].hour)) + (1 + (int)log10(all_log[i].minute)) + (1 + (int)log10(all_log[i].second))));
+        printf("%i\n", all_log[i].temperature);
+        i++;
     }
-    fclose(fp);
     printf("\n");
     printf("Press \"h\" to go back or \"e\" to exit...");
 }
 
+void creat_log_array()
+{
+    char textLine[50];
+    char temp[50];
+    t_log logs;
+    int index = 0;
+    FILE *fp;
+    fp = fopen("log.txt", "r");
+    while (fgets(textLine, 50, fp) != NULL){
+        strcpy(temp, textLine);
+        if (token_line(temp, &logs) == 1){
+                add_valid_log(logs, &index);
+        }
+    }
+    fclose(fp);
+}
 
 int token_line(char text[], t_log *logs)
 {
@@ -135,9 +138,12 @@ int token_line(char text[], t_log *logs)
         }
         else if(number == 6){
             if (check_temperature(p) == 1){
-                temperature = p;
+                temperature = atoi(p);
                 number++;
             }
+        }
+        else{
+            number++;
         }
     }
     if (number ==7){
@@ -233,7 +239,7 @@ int check_second(int second)
      }
 }
 
-void add_valid_log(t_log logs, t_log *all_log, int *index)
+void add_valid_log(t_log logs, int *index)
 {
     all_log[*index].year = logs.year;
     all_log[*index].month = logs.month;

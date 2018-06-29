@@ -10,6 +10,7 @@ int main()
 	int logging_is_running = 0;
 	comEnumerate();
 	print_startup_message();
+	creat_log_array();
 
 	while (1) {
 		if (kbhit()) {

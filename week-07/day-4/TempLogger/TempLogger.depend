@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1530275694 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\main.c
+1530297541 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -11,7 +11,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1530278658 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
+1530297548 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
 
 1530181506 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.h
 
@@ -23,7 +23,7 @@
 	"printer.h"
 	"string.h"
 
-1530278716 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
+1530299374 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
 	<stdio.h>
 	<string.h>
 	<math.h>
