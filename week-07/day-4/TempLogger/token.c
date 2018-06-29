@@ -5,6 +5,7 @@
 #include "token.h"
 #include "STP/printer.h"
 #include "STP/rs232/rs232.h"
+#include "avarage.h"
 
 void creat_log_array()
 {

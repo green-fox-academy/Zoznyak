@@ -5,6 +5,7 @@
 #include "printer.h"
 #include "rs232/rs232.h"
 #include "../token.h"
+#include "../avarage.h"
 
 void print_startup_message()
 {

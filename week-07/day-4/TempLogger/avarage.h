@@ -1,0 +1,6 @@
+#ifndef AVARAGE_H_INCLUDED
+#define AVARAGE_H_INCLUDED
+
+
+
+#endif // AVARAGE_H_INCLUDED
