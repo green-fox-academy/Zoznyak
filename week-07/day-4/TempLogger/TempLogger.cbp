@@ -31,9 +31,24 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="main.c">
+		<Unit filename="STP/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="STP/parser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="STP/parser.h" />
+		<Unit filename="STP/printer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="STP/printer.h" />
+		<Unit filename="STP/rs232/rs232-linux.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="STP/rs232/rs232-win.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="STP/rs232/rs232.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

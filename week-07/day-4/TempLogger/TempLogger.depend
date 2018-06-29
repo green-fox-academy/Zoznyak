@@ -11,7 +11,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1530195679 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
+1530274126 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
 
 1530181506 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.h
 
@@ -23,7 +23,7 @@
 	"printer.h"
 	"string.h"
 
-1530201158 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
+1530274660 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
 	<stdio.h>
 	<string.h>
 	<math.h>

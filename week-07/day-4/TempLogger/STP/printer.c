@@ -16,8 +16,9 @@ void print_startup_message()
 	printf(" p      Set port name\n");
 	printf(" o      Open port\n");
 	printf(" s      Start logging / Stop logging\n");
-	printf(" k      List logged data\n");
 	printf(" c      Close port\n");
+	printf(" k      List after error handling\n");
+	printf(" a      Avarage temperature handling by days\n");
     printf(" e      Exit from the program\n");
 }
 
@@ -53,12 +54,12 @@ void print_log()
 	printf("======================================\n");
     while (fgets(textLine, 50, fp) != NULL){
         strcpy(temp, textLine);
-        if (validate_line(temp, &logs) == 1){
+        if (token_line(temp, &logs) == 1){
             printf("%i.%i.%i", logs.year, logs.month, logs.day);
             offset_text(13 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
             printf("%i:%i:%i", logs.hour, logs.minute, logs.second);
             offset_text(14 - ((1 + (int)log10(logs.hour)) + (1 + (int)log10(logs.minute)) + (1 + (int)log10(logs.second))));
-            printf("%i\n", logs.temperature);
+            printf("%i\n", atoi(logs.temperature));
         }
     }
     fclose(fp);
@@ -66,70 +67,70 @@ void print_log()
     printf("Press \"h\" to go back or \"e\" to exit...");
 }
 
-int validate_line(char text[], t_log *logs)
-{
-    if(token_line(text, &logs) == 1){
-        return 1;
-    }
-    else{
-        return 0;
-    }
-}
 
-int token_line(char text[], t_log **logs)
+int token_line(char text[], t_log *logs)
 {
     char *p;
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+    int second;
+    int temperature;
     int number = 0;
-    int valid = 1;
-    int valid_arg_min;
-    int valid_arg_max;
     for (p = strtok(text, ".: "); p != NULL; p = strtok(NULL, ".: ")){
         if(number == 0){
-            valid_arg_min = 0;
-            valid_arg_max = 2019;
-            (*(*logs)).year = atoi(p);
+            if (check_year(atoi(p)) == 1){
+                year = atoi(p);
+                number++;
+            }
         }
         else if(number == 1){
-            valid_arg_min = 0;
-            valid_arg_max = 13;
-            (*(*logs)).month = atoi(p);
+            if (check_month(atoi(p)) == 1){
+                month = atoi(p);
+                number++;
+            }
         }
         else if(number == 2){
-            valid_arg_min = 0;
-            valid_arg_max = 32;
-            (*(*logs)).day = atoi(p);
+            if (check_day(atoi(p)) == 1){
+                day = atoi(p);
+                number++;
+            }
         }
         else if(number == 3){
-            valid_arg_min = 0;
-            valid_arg_max = 24;
-            (*(*logs)).hour = atoi(p);
+            if (check_hour(atoi(p)) == 1){
+                hour = atoi(p);
+                number++;
+            }
         }
         else if(number == 4){
-            valid_arg_min = 0;
-            valid_arg_max = 60;
-            (*(*logs)).minute = atoi(p);
+            if (check_minute(atoi(p)) == 1){
+                minute = atoi(p);
+                number++;
+            }
         }
         else if(number == 5){
-            valid_arg_min = 0;
-            valid_arg_max = 60;
-            (*(*logs)).second = atoi(p);
-        }
-        else if(number == 6 && (atoi(p)) > -273){
-            valid_arg_min = -273;
-            valid_arg_max = 1000;
-            if((strlen(p) != 1 && (atoi(p)) != 0) || (strlen(p) == 2 && isdigit(p[0]) == 1)){
-                (*(*logs)).temperature = atoi(p);
-            }
-            else{
-                valid = 0;
+            if (check_second(atoi(p)) == 1){
+                second = atoi(p);
+                number++;
             }
         }
-        if (atoi(p) > valid_arg_min && atoi(p) < valid_arg_max && valid == 1){
-            number++;
+        else if(number == 6){
+            if (check_temperature(p) == 1){
+                temperature = p;
+                number++;
             }
-
+        }
     }
-    if (number == 7){
+    if (number ==7){
+        (*logs).year = year;
+        (*logs).month = month;
+        (*logs).day = day;
+        (*logs).hour = hour;
+        (*logs).minute = minute;
+        (*logs).second = second;
+        (*logs).temperature = temperature;
         return 1;
     }
     else {
@@ -143,6 +144,76 @@ void offset_text(int number)
     for(i = 0; i < number; i++){
         printf(" ");
     }
+}
+
+int check_temperature(char temperature[])
+{
+    if((atoi(temperature) > -273 && strlen(temperature) != 1 && (atoi(temperature)) != 0) || (strlen(temperature) == 2 && isdigit(temperature[0]) == 1)){
+            return 1;
+        }
+    else{
+        return 0;
+    }
+}
+
+int check_year(int year)
+{
+     if (year > 0 && year < 2019){
+        return 1;
+     }
+     else{
+        return 0;
+     }
+}
+
+int check_month(int month)
+{
+     if (month > 0 && month < 13){
+        return 1;
+     }
+     else{
+        return 0;
+     }
+}
+
+int check_day(int day)
+{
+     if (day > 0 && day < 32){
+        return 1;
+     }
+     else{
+        return 0;
+     }
+}
+
+int check_hour(int hour)
+{
+     if (hour >- 0 && hour < 24){
+        return 1;
+     }
+     else{
+        return 0;
+     }
+}
+
+int check_minute(int minute)
+{
+     if (minute >= 0 && minute < 60){
+        return 1;
+     }
+     else{
+        return 0;
+     }
+}
+
+int check_second(int second)
+{
+     if (second >= 0 && second < 60){
+        return 1;
+     }
+     else{
+        return 0;
+     }
 }
 
 
