@@ -26,4 +26,6 @@ int check_hour(int hour);
 int check_second(int second);
 int check_temperature(char temp[]);
 
+void add_valid_log(t_log logs, t_log *all_log, int *index);
+
 #endif // PRINTER_H_INCLUDED

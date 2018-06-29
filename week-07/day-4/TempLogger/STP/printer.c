@@ -60,6 +60,9 @@ void print_log()
     char textLine[50];
     char temp[50];
     t_log logs;
+    t_log all_log[100];
+    int index = 0;
+    //int *pindex = &index;
     FILE *fp;
     fp = fopen("log.txt", "r");
     printf("  Date\t\tTime\t   Temperature\n");
@@ -67,11 +70,15 @@ void print_log()
     while (fgets(textLine, 50, fp) != NULL){
         strcpy(temp, textLine);
         if (token_line(temp, &logs) == 1){
-            printf("%i.%i.%i", logs.year, logs.month, logs.day);
-            offset_text(13 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
-            printf("%i:%i:%i", logs.hour, logs.minute, logs.second);
-            offset_text(14 - ((1 + (int)log10(logs.hour)) + (1 + (int)log10(logs.minute)) + (1 + (int)log10(logs.second))));
-            printf("%i\n", atoi(logs.temperature));
+                add_valid_log(logs, all_log, &index);
+                printf("%i.%i.%i\n",all_log[index].year,all_log[0].month,all_log[0].day);
+                printf("%i", index);
+            //printf("%i.%i.%i", logs.year, logs.month, logs.day);
+            //offset_text(13 - ((1 + (int)log10(logs.year)) + (1 + (int)log10(logs.month)) + (1 + (int)log10(logs.day))));
+            //printf("%i:%i:%i", logs.hour, logs.minute, logs.second);
+            //offset_text(14 - ((1 + (int)log10(logs.hour)) + (1 + (int)log10(logs.minute)) + (1 + (int)log10(logs.second))));
+            //printf("%i\n", atoi(logs.temperature));
+
         }
     }
     fclose(fp);
@@ -226,6 +233,20 @@ int check_second(int second)
      else{
         return 0;
      }
+}
+
+void add_valid_log(t_log logs, t_log *all_log, int *index)
+{
+    //all_log[*index] = logs;
+    //(*index) ++;
+    all_log[*index].year = logs.year;       //(*all_log[*index])
+    all_log[*index].month = logs.month;
+    all_log[*index].day = logs.day;
+    all_log[*index].hour = logs.hour;
+    all_log[*index].minute = logs.minute;
+    all_log[*index].second = logs.second;
+    all_log[*index].temperature = logs.temperature;
+    (*index) ++;
 }
 
 
