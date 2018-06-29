@@ -75,7 +75,7 @@
 	"STP/rs232/rs232.h"
 	"average.h"
 
-1530303903 source:d:\greenfox\zoznyak\week-07\day-4\templogger\average.c
+1530307051 source:d:\greenfox\zoznyak\week-07\day-4\templogger\average.c
 	<stdio.h>
 	<string.h>
 	<math.h>
@@ -85,5 +85,5 @@
 	"STP/printer.h"
 	"STP/rs232/rs232.h"
 
-1530303119 d:\greenfox\zoznyak\week-07\day-4\templogger\average.h
+1530307051 d:\greenfox\zoznyak\week-07\day-4\templogger\average.h
 
