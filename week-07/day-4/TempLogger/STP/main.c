@@ -5,6 +5,7 @@
 #include "printer.h"
 #include "parser.h"
 #include "../token.h"
+#include "../average.h"
 
 int main()
 {
@@ -45,7 +46,7 @@ int main()
 				break;
 			case 'a':
 			    clear_screen();
-				avarage_by_days();
+				average_by_days();
 				print_startup_message();
 				break;
 			case 'c':
@@ -71,14 +72,14 @@ int main()
 	return 0;
 }
 
-void avarage_by_days(){
-    print_daily_avarage_message();
+void average_by_days(){
+    print_daily_average_message();
     while (1) {
 		if (kbhit()) {
 			char key = getch();
 			switch (key) {
 			case '1':
-				printf("1.");
+				get_daily_avg();
 				break;
 			case '2':
 				printf("2.");
@@ -87,7 +88,7 @@ void avarage_by_days(){
 				printf("3.");
 				break;
 			}
-			if (key == 'e')
+			if (key == 'h')
 				break;
 		}
     }

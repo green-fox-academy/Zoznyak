@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1530300809 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\main.c
+1530302286 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -7,12 +7,13 @@
 	"printer.h"
 	"parser.h"
 	"../token.h"
+	"../average.h"
 
 1518448099 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\rs232\rs232.h
 	<stdint.h>
 	<stdlib.h>
 
-1530300940 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
+1530302279 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
 
 1530181506 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.h
 
@@ -25,7 +26,7 @@
 	"../token.h"
 	"string.h"
 
-1530300871 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
+1530302279 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
 	<stdio.h>
 	<string.h>
 	<math.h>
@@ -33,6 +34,7 @@
 	"printer.h"
 	"rs232/rs232.h"
 	"../token.h"
+	"../average.h"
 
 1518448099 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\rs232\rs232-linux.c
 	"rs232.h"
@@ -50,4 +52,38 @@
 	<string.h>
 
 1530300923 d:\greenfox\zoznyak\week-07\day-4\templogger\token.h
+
+1530301344 source:d:\greenfox\zoznyak\week-07\day-4\templogger\avarage.c
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"token.h"
+	"avarage.h"
+	"STP/printer.h"
+	"STP/rs232/rs232.h"
+
+1530301858 d:\greenfox\zoznyak\week-07\day-4\templogger\avarage.h
+
+1530302279 source:d:\greenfox\zoznyak\week-07\day-4\templogger\token.c
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"token.h"
+	"STP/printer.h"
+	"STP/rs232/rs232.h"
+	"average.h"
+
+1530303903 source:d:\greenfox\zoznyak\week-07\day-4\templogger\average.c
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<ctype.h>
+	"token.h"
+	"average.h"
+	"STP/printer.h"
+	"STP/rs232/rs232.h"
+
+1530303119 d:\greenfox\zoznyak\week-07\day-4\templogger\average.h
 

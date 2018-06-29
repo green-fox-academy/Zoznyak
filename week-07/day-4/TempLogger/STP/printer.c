@@ -5,7 +5,7 @@
 #include "printer.h"
 #include "rs232/rs232.h"
 #include "../token.h"
-#include "../avarage.h"
+#include "../average.h"
 
 void print_startup_message()
 {
@@ -20,19 +20,21 @@ void print_startup_message()
 	printf(" s      Start logging / Stop logging\n");
 	printf(" c      Close port\n");
 	printf(" k      List after error handling\n");
-	printf(" a      Avarage temperature handling by days\n");
+	printf(" a      Average temperature handling by days\n");
     printf(" e      Exit from the program\n");
 }
 
-void print_daily_avarage_message()
+void print_daily_average_message()
 {
     clear_screen();
-	printf("Avarage temperature handling by days\n");
+	printf("Average temperature handling by days\n");
 	printf("====================================\n");
 	printf("Commands:\n");
-	printf(" 1      One day avarage\n");
-	printf(" 2      Last days avarage\n");
-	printf(" 3      Day to day avarage\n");
+	printf(" 1      One day average\n");
+	printf(" 2      Last days average\n");
+	printf(" 3      Day to day average\n");
+	printf("\n");
+	printf("Press \"h\" to go back...");
 }
 
 void clear_screen()
@@ -80,6 +82,7 @@ void offset_text(int number)
         printf(" ");
     }
 }
+
 
 
 
