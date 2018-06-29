@@ -3,6 +3,7 @@
 #include "rs232/rs232.h"
 #include "parser.h"
 #include "printer.h"
+#include "../token.h"
 #include "string.h"
 
 int parser_port = -1;

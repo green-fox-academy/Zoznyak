@@ -4,6 +4,7 @@
 #include "rs232/rs232.h"
 #include "printer.h"
 #include "parser.h"
+#include "../token.h"
 
 int main()
 {
@@ -39,6 +40,7 @@ int main()
 				break;
             case 'k':
                 clear_screen();
+                creat_log_array();
 				print_log();
 				break;
 			case 'a':

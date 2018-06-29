@@ -1,35 +1,38 @@
 # depslib dependency file v1.0
-1530297541 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\main.c
+1530300809 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	"rs232/rs232.h"
 	"printer.h"
 	"parser.h"
+	"../token.h"
 
 1518448099 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\rs232\rs232.h
 	<stdint.h>
 	<stdlib.h>
 
-1530297548 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
+1530300940 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.h
 
 1530181506 d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.h
 
-1530199611 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.c
+1530300714 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\parser.c
 	<stdio.h>
 	<time.h>
 	"rs232/rs232.h"
 	"parser.h"
 	"printer.h"
+	"../token.h"
 	"string.h"
 
-1530299374 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
+1530300871 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\printer.c
 	<stdio.h>
 	<string.h>
 	<math.h>
 	<ctype.h>
 	"printer.h"
 	"rs232/rs232.h"
+	"../token.h"
 
 1518448099 source:d:\greenfox\zoznyak\week-07\day-4\templogger\stp\rs232\rs232-linux.c
 	"rs232.h"
@@ -45,4 +48,6 @@
 	"rs232.h"
 	<stdio.h>
 	<string.h>
+
+1530300923 d:\greenfox\zoznyak\week-07\day-4\templogger\token.h
 
