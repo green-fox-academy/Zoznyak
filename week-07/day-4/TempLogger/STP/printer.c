@@ -22,6 +22,18 @@ void print_startup_message()
     printf(" e      Exit from the program\n");
 }
 
+void print_daily_avarage_message()
+{
+    clear_screen();
+	//printf("Temperature Logger Application\n");
+	printf("Avarage temperature handling by days\n");
+	printf("====================================\n");
+	printf("Commands:\n");
+	printf(" 1      One day avarage\n");
+	printf(" 2      Last days avarage\n");
+	printf(" 3      Day to day avarage\n");
+}
+
 void clear_screen()
 {
 	system("cls");
@@ -215,5 +227,7 @@ int check_second(int second)
         return 0;
      }
 }
+
+
 
 

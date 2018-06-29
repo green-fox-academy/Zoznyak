@@ -40,6 +40,11 @@ int main()
                 clear_screen();
 				print_log();
 				break;
+			case 'a':
+			    clear_screen();
+				avarage_by_days();
+				print_startup_message();
+				break;
 			case 'c':
 				close_port();
 				break;
@@ -50,7 +55,6 @@ int main()
 			if (key == 'e')
 				break;
 		}
-
 		if (logging_is_running) {
 			if (log_data() != 0) {
 				printf("Logging error.\n");
@@ -62,4 +66,26 @@ int main()
 
 	comTerminate();
 	return 0;
+}
+
+void avarage_by_days(){
+    print_daily_avarage_message();
+    while (1) {
+		if (kbhit()) {
+			char key = getch();
+			switch (key) {
+			case '1':
+				printf("1.");
+				break;
+			case '2':
+				printf("2.");
+				break;
+			case '3':
+				printf("3.");
+				break;
+			}
+			if (key == 'e')
+				break;
+		}
+    }
 }
