@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1530137536 source:d:\greenfox\zoznyak\week-07\day-2\todo\main.c
+1530175346 source:d:\greenfox\zoznyak\week-07\day-2\todo\main.c
 	<stdio.h>
 	<stdlib.h>
 	"file.h"

@@ -31,9 +31,18 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="file.h" />
+		<Unit filename="help.txt" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="todo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="todo.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
