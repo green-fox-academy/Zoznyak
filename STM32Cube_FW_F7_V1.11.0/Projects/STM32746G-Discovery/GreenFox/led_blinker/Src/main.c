@@ -55,6 +55,8 @@ static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void MPU_Config(void);
 static void CPU_CACHE_Enable(void);
+void shift_reset(int *shift);
+void turn_LED_on(int shift);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -91,16 +93,87 @@ int main(void)
 
 
   /* Add your application code here     */
-  BSP_LED_Init(LED_GREEN);
-  BSP_LED_On(LED_GREEN);
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
+
+  //BSP_LED_Init(LED_GREEN);
+  //BSP_LED_On(LED_GREEN);
+  GPIO_InitTypeDef gpio_init_f;
+  GPIO_InitTypeDef gpio_init_a;
+  GPIO_InitTypeDef button;
+
+  gpio_init_f.Pin = GPIO_PIN_10 | GPIO_PIN_9 | GPIO_PIN_8;
+  gpio_init_f.Mode = GPIO_MODE_OUTPUT_PP;
+  gpio_init_f.Pull = GPIO_NOPULL;
+
+  gpio_init_a.Pin = GPIO_PIN_0;
+  gpio_init_a.Mode = GPIO_MODE_OUTPUT_PP;
+  gpio_init_a.Pull = GPIO_NOPULL;
+
+  button.Pin = GPIO_PIN_15;
+  button.Mode = GPIO_MODE_INPUT;
+
+  HAL_GPIO_Init(GPIOF, &gpio_init_f);
+  HAL_GPIO_Init(GPIOA, &gpio_init_a);
+  HAL_GPIO_Init(GPIOA, &button);
+  int shift = 1;
 
   /* Infinite loop */
   while (1)
   {
 	  //TODO:
 	  //Flash the ledwith 200 ms period time
+	  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+	  //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET);
+	  //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+	  //HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET);
+	  //GPIOA->ODR |= 1;
+	  //GPIOF->ODR = GPIOF->ODR | 1 << 8 | 1 << 9 | 1 << 10;
+	  ////HAL_Delay(500);
+	  ////GPIOF->BSRR = GPIOF->BSRR | 1 << 8 | 1 << 9 | 1 << 10;
+	  ////HAL_Delay(500);
+	  ////GPIOF->BSRR = GPIOF->BSRR | 1 << 24 | 1 << 25 | 1 << 26;
 
+	  if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == 0){
+		  shift_reset(&shift);
+	  	  turn_LED_on(shift);
+	  	  HAL_Delay(200);
+	  	  shift = shift << 1;
+	  }
+	  else{
+		  GPIOA->BSRR |= 1 << 16;
+		  GPIOF->BSRR = GPIOF->BSRR | 1 << 24 | 1 << 25 | 1 << 26;
+	  }
   }
+}
+
+void shift_reset(int *shift)
+{
+	if (*shift > 8){
+		*shift = 1;
+	}
+}
+
+void turn_LED_on(int shift)
+{
+	switch (shift){
+		case 1:
+			GPIOA->BSRR |= 1;
+			GPIOF->BSRR = GPIOF->BSRR | 1 << 24 | 1 << 25 | 1 << 26;
+			break;
+		case 2:
+			GPIOA->BSRR |= 1 << 16;
+			GPIOF->BSRR = GPIOF->BSRR | 1 << 24 | 1 << 9 | 1 << 26;
+			break;
+		case 4:
+			GPIOA->BSRR |= 1 << 16;
+			GPIOF->BSRR = GPIOF->BSRR | 1 << 8 | 1 << 25 | 1 << 26;
+			break;
+		case 8:
+			GPIOA->BSRR |= 1 << 16;
+			GPIOF->BSRR = GPIOF->BSRR | 1 << 24 | 1 << 25 | 1 << 10;
+			break;
+	}
 }
 
 /**
@@ -169,9 +242,11 @@ static void SystemClock_Config(void)
   */
 static void Error_Handler(void)
 {
+
   /* User may add here some code to deal with this error */
   while(1)
   {
+
   }
 }
 
