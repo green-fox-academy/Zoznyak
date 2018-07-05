@@ -55,6 +55,7 @@ UART_HandleTypeDef uart_handle;
 
 /* Private function prototypes -----------------------------------------------*/
 int GetTime();
+int GetAvg(int times[]);
 
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -153,16 +154,13 @@ int main(void)
   printf("Game started\r\n");
   int times[10];
   int counter = 0;
-  int avg;
-  int sum;
-  int i;
+  int counter2 = 0;
   while (1)
   {
 	  uint32_t start;
 	  uint32_t stop;
 	  uint32_t result;
-	  uint32_t time = HAL_RNG_GetRandomNumber(&timer) % 11000;
-	  printf("\n%d\r", time);
+	  uint32_t time = (HAL_RNG_GetRandomNumber(&timer) % 11000) / 2;
 	  HAL_Delay(time);
 	  BSP_LED_On(LED_GREEN);
 	  start = GetTime();
@@ -177,12 +175,11 @@ int main(void)
 		  counter++;
 	  }
 	  else{
-		  for (i = 0; i < 10; i++){
-			  sum += times[i];
-		  }
-		  avg = sum/10;
 		  counter = 0;
-		  printf("AVG: %d\r\n", avg);
+	  }
+	  counter2 ++;
+	  if (counter2 / 10 > 0){
+		  printf("AVG: %d ms\r\n", GetAvg(times));
 	  }
   }
 }
@@ -190,6 +187,18 @@ int main(void)
 int GetTime()
 {
 	return HAL_GetTick();
+}
+
+int GetAvg(int times[])
+{
+	int sum;
+	int i;
+	int avg;
+	for (i = 0; i < 10; i++){
+		  sum += times[i];
+	}
+	avg = sum / 10;
+	return avg;
 }
 /**
   * @brief  Retargets the C library printf function to the USART.
