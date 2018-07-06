@@ -32,6 +32,8 @@ static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void MPU_Config(void);
 static void CPU_CACHE_Enable(void);
+int check_coordinates(TS_StateTypeDef ts_state, int posX, int posY);
+int check_touching_area(int number, int pos);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -101,11 +103,14 @@ int main(void)
   BSP_LCD_SetTextColor(LCD_COLOR_RED);
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
+  uint32_t posX, posY;
+  int game = 0;
 
+  //int counter = 1;
 
-  while (1)
+  while (game != 5)
   {
-	  uint32_t posX, posY;
+	  int match = 0;
 	  do{
 		  posX = (HAL_RNG_GetRandomNumber(&position) % 11000) / 20;
 	  }while(posX > 430);
@@ -114,20 +119,48 @@ int main(void)
 	  }while(posY > 222);
 	  printf("X: %d\r\n", posX);
 	  printf("Y: %d\r\n", posY);
-	  HAL_Delay(1000);
 
-	  BSP_LCD_FillRect(ts_state.touchX[0], ts_state.touchY[0], 50, 50);
-
+	  BSP_LCD_FillRect(posX, posY, 50, 50);
+	  while (match == 0)
+	  {
+		  BSP_TS_GetState(&ts_state);
+		  if (ts_state.touchDetected) {
+			  int x,y;
+			  x = ts_state.touchX[0];
+			  y = ts_state.touchY[0];
+			  printf("X: %d\r\n", x);
+			  printf("Y: %d\r\n", y);
+			  if(x > posX && x < posX + 50 && y > posY && y < posY + 50){
+				  printf("TALALAt\r\n");
+				  match = 1;
+				  BSP_LCD_Clear(LCD_COLOR_WHITE);
+				  game++;
+			  }
+		  }
+	  }
   }
-  /*
-  BSP_TS_GetState(&ts_state);
+}
 
-  	  if (ts_state.touchDetected) {
-  		  BSP_LCD_SetTextColor(LCD_COLOR_RED);
-  		  //BSP_LCD_FillCircle(ts_state.touchX[0], ts_state.touchY[0], 10);
-  		  BSP_LCD_FillRect(ts_state.touchX[0], ts_state.touchY[0], 40, 40);
-  	  }
-  */
+int check_coordinates(TS_StateTypeDef ts_state, int posX, int posY)
+{
+	int x,y;
+	x = ts_state.touchX[0];
+	y = ts_state.touchY[0];
+	if (check_touching_area(ts_state.touchX[0], posX) && check_touching_area(ts_state.touchY[0], posY)){
+		printf("X: %d\r\n", x);
+		printf("Y: %d\r\n", y);
+	}
+	return 1;
+}
+
+int check_touching_area(int number, int pos)
+{
+	if (number >= pos && number <= pos + 50){
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }
 /**
   * @brief  Retargets the C library printf function to the USART.
