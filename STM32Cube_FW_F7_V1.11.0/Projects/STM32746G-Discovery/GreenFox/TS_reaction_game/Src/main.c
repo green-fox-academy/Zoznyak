@@ -96,24 +96,27 @@ int main(void)
   BSP_LCD_LayerDefaultInit(1, LCD_FB_START_ADDRESS);
   BSP_LCD_SelectLayer(1);
   BSP_LCD_SetFont(&LCD_DEFAULT_FONT);
-
-
-
   BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
   BSP_LCD_Clear(LCD_COLOR_WHITE);
+  BSP_LCD_SetTextColor(LCD_COLOR_RED);
+  BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
 
-  	BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
   while (1)
   {
-	  uint32_t posX = (HAL_RNG_GetRandomNumber(&position) % 11000) / 20;
-	  uint32_t posY = (HAL_RNG_GetRandomNumber(&position) % 11000) / 40;
+	  uint32_t posX, posY;
+	  do{
+		  posX = (HAL_RNG_GetRandomNumber(&position) % 11000) / 20;
+	  }while(posX > 430);
+	  do{
+		  posY = (HAL_RNG_GetRandomNumber(&position) % 11000) / 40;
+	  }while(posY > 222);
 	  printf("X: %d\r\n", posX);
 	  printf("Y: %d\r\n", posY);
 	  HAL_Delay(1000);
 
-	  //BSP_LCD_FillRect(ts_state.touchX[0], ts_state.touchY[0], 40, 40);
+	  BSP_LCD_FillRect(ts_state.touchX[0], ts_state.touchY[0], 50, 50);
 
   }
   /*
