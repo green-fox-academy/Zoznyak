@@ -98,8 +98,8 @@ int main(void)
   BSP_LCD_SelectLayer(1);
   BSP_LCD_SetFont(&LCD_DEFAULT_FONT);
   BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-  BSP_LCD_Clear(LCD_COLOR_WHITE);
   BSP_LCD_SetTextColor(LCD_COLOR_RED);
+  BSP_LCD_Clear(LCD_COLOR_WHITE);
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
   uint32_t posX, posY;
@@ -109,10 +109,33 @@ int main(void)
   uint32_t result;
   uint32_t sum = 0;
   uint32_t avg;
+  int go = 0;
+
+  BSP_LCD_SetBackColor(LCD_COLOR_RED);
+  BSP_LCD_FillRect(150, 100, 180, 72);
+  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+  BSP_LCD_DisplayStringAt(0, 125, "START", CENTER_MODE);
+
+  while (go == 0)
+  {
+	  BSP_TS_GetState(&ts_state);
+	  if (ts_state.touchDetected) {
+		  int x,y;
+		  x = ts_state.touchX[0];
+  		  y = ts_state.touchY[0];
+  		  if(x > 150 && x < 330 && y > 100 && y < 172){
+  			  go = 1;
+  			  BSP_LCD_Clear(LCD_COLOR_WHITE);
+  		  }
+	  }
+  }
+  BSP_LCD_SetTextColor(LCD_COLOR_RED);
+
+
 
   while (game != 5)
   {
-	  uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 2;
+	  uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 3;
 	  int match = 0;
 	  do{
 		  posX = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
@@ -146,6 +169,7 @@ int main(void)
   char *text[20];
   avg = sum / 5;
   sprintf(text,"%d ms", avg);
+  BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
   BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
   BSP_LCD_DisplayStringAt(0, 115, "Average reaction time:", CENTER_MODE);
   BSP_LCD_DisplayStringAt(0, 135, text, CENTER_MODE);
