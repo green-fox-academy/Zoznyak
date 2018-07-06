@@ -5,6 +5,7 @@
 #include "stm32746g_discovery_lcd.h"
 
 
+
 /** @addtogroup STM32F7xx_HAL_Examples
   * @{
   */
@@ -32,8 +33,6 @@ static void SystemClock_Config(void);
 static void Error_Handler(void);
 static void MPU_Config(void);
 static void CPU_CACHE_Enable(void);
-int check_coordinates(TS_StateTypeDef ts_state, int posX, int posY);
-int check_touching_area(int number, int pos);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -71,7 +70,7 @@ int main(void)
   /* Add your application code here
      */
   __HAL_RCC_RNG_CLK_ENABLE();
-  RNG_HandleTypeDef position;
+  RNG_HandleTypeDef random;
   TS_StateTypeDef ts_state;
 
   BSP_LED_Init(LED_GREEN);
@@ -85,9 +84,9 @@ int main(void)
   uart_handle.Init.HwFlowCtl  = UART_HWCONTROL_NONE;
   uart_handle.Init.Mode       = UART_MODE_TX_RX;
 
-  position.Instance = RNG;
+  random.Instance = RNG;
 
-  HAL_RNG_Init(&position);
+  HAL_RNG_Init(&random);
 
   BSP_COM_Init(COM1, &uart_handle);
 
@@ -105,22 +104,25 @@ int main(void)
 
   uint32_t posX, posY;
   int game = 0;
-
-  //int counter = 1;
+  uint32_t start;
+  uint32_t stop;
+  uint32_t result;
+  uint32_t sum = 0;
+  uint32_t avg;
 
   while (game != 5)
   {
+	  uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 2;
 	  int match = 0;
 	  do{
-		  posX = (HAL_RNG_GetRandomNumber(&position) % 11000) / 20;
+		  posX = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
 	  }while(posX > 430);
 	  do{
-		  posY = (HAL_RNG_GetRandomNumber(&position) % 11000) / 40;
+		  posY = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
 	  }while(posY > 222);
-	  printf("X: %d\r\n", posX);
-	  printf("Y: %d\r\n", posY);
-
+	  HAL_Delay(timer);
 	  BSP_LCD_FillRect(posX, posY, 50, 50);
+	  start = HAL_GetTick();
 	  while (match == 0)
 	  {
 		  BSP_TS_GetState(&ts_state);
@@ -128,40 +130,27 @@ int main(void)
 			  int x,y;
 			  x = ts_state.touchX[0];
 			  y = ts_state.touchY[0];
-			  printf("X: %d\r\n", x);
-			  printf("Y: %d\r\n", y);
 			  if(x > posX && x < posX + 50 && y > posY && y < posY + 50){
-				  printf("TALALAt\r\n");
+				  stop = HAL_GetTick();
+				  result = stop - start;
+				  printf("%d\r\n", result);
 				  match = 1;
 				  BSP_LCD_Clear(LCD_COLOR_WHITE);
 				  game++;
 			  }
 		  }
 	  }
+	  sum += result;
+	  printf("%d\r\n", sum);
   }
+  char *text[20];
+  avg = sum / 5;
+  sprintf(text,"%d ms", avg);
+  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+  BSP_LCD_DisplayStringAt(0, 115, "Average reaction time:", CENTER_MODE);
+  BSP_LCD_DisplayStringAt(0, 135, text, CENTER_MODE);
 }
 
-int check_coordinates(TS_StateTypeDef ts_state, int posX, int posY)
-{
-	int x,y;
-	x = ts_state.touchX[0];
-	y = ts_state.touchY[0];
-	if (check_touching_area(ts_state.touchX[0], posX) && check_touching_area(ts_state.touchY[0], posY)){
-		printf("X: %d\r\n", x);
-		printf("Y: %d\r\n", y);
-	}
-	return 1;
-}
-
-int check_touching_area(int number, int pos)
-{
-	if (number >= pos && number <= pos + 50){
-		return 1;
-	}
-	else {
-		return 0;
-	}
-}
 /**
   * @brief  Retargets the C library printf function to the USART.
   * @param  None
