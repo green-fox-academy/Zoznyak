@@ -53,6 +53,7 @@
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef uart_handle;
 TIM_HandleTypeDef tim_handle;
+GPIO_InitTypeDef gpio_init_f;
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -105,9 +106,10 @@ int main(void)
      */
   __HAL_RCC_GPIOI_CLK_ENABLE();
   __HAL_RCC_TIM2_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
 
   tim_handle.Instance = TIM2;
-  tim_handle.Init.Period = 2000;
+  tim_handle.Init.Period = 60000;
   tim_handle.Init.Prescaler = 10800;
   tim_handle.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   tim_handle.Init.CounterMode = TIM_COUNTERMODE_UP;
@@ -126,6 +128,12 @@ int main(void)
 
   BSP_COM_Init(COM1, &uart_handle);
 
+  gpio_init_f.Pin = GPIO_PIN_10 | GPIO_PIN_9 | GPIO_PIN_8;
+  gpio_init_f.Mode = GPIO_MODE_OUTPUT_PP;
+  gpio_init_f.Pull = GPIO_NOPULL;
+
+  HAL_GPIO_Init(GPIOF, &gpio_init_f);
+
   /* Output without printf, using HAL function*/
   //char msg[] = "UART HAL Example\r\n";
   //HAL_UART_Transmit(&uart_handle, msg, strlen(msg), 100);
@@ -134,8 +142,25 @@ int main(void)
   printf("\n**********WELCOME in the timer & pwm WS**********\r\n\n");
 	  while (1)
 	  {
-		  if(__HAL_TIM_GetCounter(&tim_handle) == 2000){
-			  BSP_LED_Toggle(LED_GREEN);
+		  if(__HAL_TIM_GetCounter(&tim_handle) == 15000){
+			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+		  }
+		  if(__HAL_TIM_GetCounter(&tim_handle) == 30000){
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET);
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
+		  }
+		  if(__HAL_TIM_GetCounter(&tim_handle) == 45000){
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_SET);
+		  }
+		  if(__HAL_TIM_GetCounter(&tim_handle) == 60000){
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_RESET);
+    	  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_SET);
+		  	  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_10, GPIO_PIN_RESET);
 		  }
 
 	  }
