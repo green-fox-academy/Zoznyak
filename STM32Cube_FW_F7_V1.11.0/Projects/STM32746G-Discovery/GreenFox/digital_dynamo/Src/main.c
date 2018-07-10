@@ -52,11 +52,10 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef uart_handle;
-volatile uint32_t timIntPeriod;
-GPIO_InitTypeDef gpio_LED;
 GPIO_InitTypeDef button;
 TIM_HandleTypeDef tim2_handle;
-
+TIM_OC_InitTypeDef sConfig;
+GPIO_InitTypeDef pwm_pin;
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -108,8 +107,6 @@ int main(void) {
 
 	/* Add your application code here
 	 */
-	BSP_LED_Init(LED_GREEN);
-
 	uart_handle.Init.BaudRate = 115200;
 	uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
 	uart_handle.Init.StopBits = UART_STOPBITS_1;
@@ -120,46 +117,64 @@ int main(void) {
 
 	__HAL_RCC_TIM2_CLK_ENABLE();
 	tim2_handle.Instance = TIM2;
-	tim2_handle.Init.Period = 5000;
+	tim2_handle.Init.Period = 10;
 	tim2_handle.Init.Prescaler = 10800;
 	tim2_handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	HAL_TIM_Base_Init(&tim2_handle);
 
 	__HAL_RCC_GPIOA_CLK_ENABLE();
-	gpio_LED.Pin = GPIO_PIN_0;
-	gpio_LED.Mode = GPIO_MODE_OUTPUT_PP;
-	gpio_LED.Pull = GPIO_NOPULL;
+	pwm_pin.Alternate = GPIO_AF1_TIM2;
+	pwm_pin.Mode = GPIO_MODE_AF_PP;
+	pwm_pin.Pin = GPIO_PIN_15;
+	pwm_pin.Pull = GPIO_NOPULL;
+	pwm_pin.Speed = GPIO_SPEED_HIGH;
+	HAL_GPIO_Init(GPIOA, &pwm_pin);
 
-	button.Pin = GPIO_PIN_15;
-	button.Mode = GPIO_MODE_IT_FALLING;
+	button.Pin = GPIO_PIN_8;
+	button.Mode = GPIO_MODE_IT_RISING;
 	button.Pull = GPIO_NOPULL;
 	button.Speed = GPIO_SPEED_HIGH;
-	HAL_GPIO_Init(GPIOA, &gpio_LED);
 	HAL_GPIO_Init(GPIOA, &button);
 
-	HAL_NVIC_SetPriority(TIM2_IRQn, 0, 1);
-	HAL_NVIC_EnableIRQ(TIM2_IRQn);
+	HAL_TIM_PWM_Init(&tim2_handle);
 
-	HAL_TIM_Base_Start_IT(&tim2_handle);
+	sConfig.OCMode = TIM_OCMODE_PWM1;
+	sConfig.Pulse = 10;
+	HAL_TIM_PWM_ConfigChannel(&tim2_handle, &sConfig, TIM_CHANNEL_1);
+
+	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 1);
+	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+	HAL_TIM_Base_Start(&tim2_handle);
+	HAL_TIM_PWM_Start(&tim2_handle, TIM_CHANNEL_1);
 
 	while (1)
 	{
-
+		if(sConfig.Pulse > 0 && sConfig.Pulse <= tim2_handle.Init.Period){
+			sConfig.Pulse -= 1;
+			HAL_TIM_PWM_ConfigChannel(&tim2_handle, &sConfig, TIM_CHANNEL_1);
+			HAL_TIM_PWM_Start(&tim2_handle, TIM_CHANNEL_1);
+		}
+		printf("%d\r\n", sConfig.Pulse);
+		HAL_Delay(300);
 	}
 }
 
-void TIM2_IRQHandler(void)
+void EXTI9_5_IRQHandler(void)
 {
-	HAL_TIM_IRQHandler(&tim2_handle);
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if (htim->Instance == TIM2){
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+	if (GPIO_Pin == GPIO_PIN_8) {
+		if(sConfig.Pulse < tim2_handle.Init.Period){
+			sConfig.Pulse += 1;
+			HAL_TIM_PWM_ConfigChannel(&tim2_handle, &sConfig, TIM_CHANNEL_1);
+			HAL_TIM_PWM_Start(&tim2_handle, TIM_CHANNEL_1);
+		}
 	}
 }
-
 
 /**
  * @brief  Retargets the C library printf function to the USART.
