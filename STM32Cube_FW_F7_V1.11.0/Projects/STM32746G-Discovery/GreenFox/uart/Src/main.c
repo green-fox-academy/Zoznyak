@@ -38,6 +38,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "string.h"
+#include "stdio.h"
 
 /** @addtogroup STM32F7xx_HAL_Examples
   * @{
@@ -150,12 +151,22 @@ int main(void)
 
 void manipulate_LED(char command[])
 {
-	if(!strcmp(command,"on")){
+	if(!strcmp(command,"on") | !strcmp(command, "onf")){
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, SET);
 	}
 	else if(!strcmp(command, "off")){
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, RESET);
 	}
+
+	/*else{
+		int i;
+		for(i = 0; i < 4; i++){
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, SET);
+			HAL_Delay(50);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, RESET);
+			HAL_Delay(50);
+		}
+	}*/
 }
 
 /**

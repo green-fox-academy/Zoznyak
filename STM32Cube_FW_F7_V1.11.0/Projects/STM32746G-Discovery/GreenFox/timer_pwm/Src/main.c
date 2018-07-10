@@ -140,8 +140,10 @@ int main(void)
 
   /* Output a message using printf function */
   printf("\n**********WELCOME in the timer & pwm WS**********\r\n\n");
-	  while (1)
-	  {
+
+
+
+  while (1){
 		  if(__HAL_TIM_GetCounter(&tim_handle) == 15000){
 			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_8, GPIO_PIN_SET);
 			  HAL_GPIO_WritePin(GPIOF, GPIO_PIN_9, GPIO_PIN_RESET);

@@ -131,8 +131,6 @@ int main(void)
   }
   BSP_LCD_SetTextColor(LCD_COLOR_RED);
 
-
-
   while (game != 5)
   {
 	  uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 3;
