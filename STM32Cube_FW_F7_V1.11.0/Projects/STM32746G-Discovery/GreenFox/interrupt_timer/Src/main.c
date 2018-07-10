@@ -55,6 +55,7 @@ UART_HandleTypeDef uart_handle;
 volatile uint32_t timIntPeriod;
 GPIO_InitTypeDef gpio_LED;
 GPIO_InitTypeDef button;
+TIM_HandleTypeDef tim2_handle;
 
 
 /* Private function prototypes -----------------------------------------------*/
@@ -107,8 +108,6 @@ int main(void) {
 
 	/* Add your application code here
 	 */
-	 __HAL_RCC_GPIOA_CLK_ENABLE();
-
 	BSP_LED_Init(LED_GREEN);
 
 	uart_handle.Init.BaudRate = 115200;
@@ -117,22 +116,31 @@ int main(void) {
 	uart_handle.Init.Parity = UART_PARITY_NONE;
 	uart_handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
 	uart_handle.Init.Mode = UART_MODE_TX_RX;
-
 	BSP_COM_Init(COM1, &uart_handle);
 
+	__HAL_RCC_TIM2_CLK_ENABLE();
+	tim2_handle.Instance = TIM2;
+	tim2_handle.Init.Period = 5000;
+	tim2_handle.Init.Prescaler = 10800;
+	tim2_handle.Init.CounterMode = TIM_COUNTERMODE_UP;
+	HAL_TIM_Base_Init(&tim2_handle);
+
+	__HAL_RCC_GPIOA_CLK_ENABLE();
 	gpio_LED.Pin = GPIO_PIN_0;
 	gpio_LED.Mode = GPIO_MODE_OUTPUT_PP;
 	gpio_LED.Pull = GPIO_NOPULL;
 
 	button.Pin = GPIO_PIN_15;
-	button.Mode = GPIO_MODE_IT_RISING;
+	button.Mode = GPIO_MODE_IT_FALLING;
 	button.Pull = GPIO_NOPULL;
 	button.Speed = GPIO_SPEED_HIGH;
-
 	HAL_GPIO_Init(GPIOA, &gpio_LED);
 	HAL_GPIO_Init(GPIOA, &button);
 
-	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 1);
+	HAL_NVIC_SetPriority(TIM2_IRQn, 0, 1);
+	HAL_NVIC_EnableIRQ(TIM2_IRQn);
+
+	HAL_TIM_Base_Start_IT(&tim2_handle);
 
 	while (1)
 	{
@@ -140,15 +148,18 @@ int main(void) {
 	}
 }
 
-void EXTI15_10_IRQHandler(void)
+void TIM2_IRQHandler(void)
 {
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
+	HAL_TIM_IRQHandler(&tim2_handle);
 }
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+	if (htim->Instance == TIM2){
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+	}
 }
+
 
 /**
  * @brief  Retargets the C library printf function to the USART.
