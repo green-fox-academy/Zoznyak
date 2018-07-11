@@ -23,6 +23,7 @@ uint32_t posX, posY;
 
 /* Private function prototypes -----------------------------------------------*/
 void draw_reactangle();
+void draw_start_button();
 
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -77,19 +78,16 @@ int main(void)
   BSP_LCD_Clear(LCD_COLOR_WHITE);
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
-  //uint32_t posX, posY, pos2X, pos2Y;
+
   int game = 0;
   uint32_t start;
   uint32_t stop;
   uint32_t result;
   uint32_t sum = 0;
-  uint32_t avg;
+
   int go = 0;
 
-  BSP_LCD_SetBackColor(LCD_COLOR_RED);
-  BSP_LCD_FillRect(150, 100, 180, 72);
-  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-  BSP_LCD_DisplayStringAt(0, 125, "START", CENTER_MODE);
+  draw_start_button();
 
   while (go == 0)
   {
@@ -110,18 +108,8 @@ int main(void)
   {
 	  uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 3;
 	  int match = 0;
-
-//	  do{
-//		  posX = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
-//	  }while(posX > 430);
-//	  do{
-//		  posY = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
-//	  }while(posY > 222);
-
 	  HAL_Delay(timer);
 	  draw_reactangle();
-//	  BSP_LCD_SetTextColor(LCD_COLOR_RED);
-//	  BSP_LCD_FillRect(posX, posY, 50, 50);
 	  start = HAL_GetTick();
 	  while (match == 0)
 	  {
@@ -143,13 +131,10 @@ int main(void)
 	  sum += result;
 	  printf("%d\r\n", sum);
   }
-  char *text[20];
-  avg = sum / 5;
-  sprintf(text,"%d ms", avg);
-  BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-  BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-  BSP_LCD_DisplayStringAt(0, 115, "Average reaction time:", CENTER_MODE);
-  BSP_LCD_DisplayStringAt(0, 135, text, CENTER_MODE);
+
+  print_avg_time(sum);
+
+
 }
 
 void draw_reactangle()
@@ -162,6 +147,24 @@ void draw_reactangle()
 	} while (posY > 222);
 	BSP_LCD_SetTextColor(LCD_COLOR_RED);
 	BSP_LCD_FillRect(posX, posY, 50, 50);
+}
+
+void draw_start_button() {
+	BSP_LCD_SetBackColor(LCD_COLOR_RED);
+	BSP_LCD_FillRect(150, 100, 180, 72);
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	BSP_LCD_DisplayStringAt(0, 125, "START", CENTER_MODE);
+}
+
+void print_avg_time(int sum) {
+	char *text[20];
+	uint32_t avg;
+	avg = sum / 5;
+	sprintf(text, "%d ms", avg);
+	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	BSP_LCD_DisplayStringAt(0, 115, "Average reaction time:", CENTER_MODE);
+	BSP_LCD_DisplayStringAt(0, 135, text, CENTER_MODE);
 }
 
 
