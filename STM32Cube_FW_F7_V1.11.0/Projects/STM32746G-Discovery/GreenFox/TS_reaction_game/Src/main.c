@@ -4,8 +4,6 @@
 #include "stm32746g_discovery_ts.h"
 #include "stm32746g_discovery_lcd.h"
 
-
-
 /** @addtogroup STM32F7xx_HAL_Examples
   * @{
   */
@@ -102,7 +100,7 @@ int main(void)
   BSP_LCD_Clear(LCD_COLOR_WHITE);
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
-  uint32_t posX, posY;
+  uint32_t posX, posY, pos2X, pos2Y;
   int game = 0;
   uint32_t start;
   uint32_t stop;
@@ -141,7 +139,16 @@ int main(void)
 	  do{
 		  posY = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
 	  }while(posY > 222);
+	  do{
+	  		  pos2X = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
+	  	  }while(pos2X > 430);
+	  	  do{
+	  		  pos2Y = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
+	  	  }while(pos2Y > 222);
 	  HAL_Delay(timer);
+	  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
+	  BSP_LCD_FillRect(pos2X, pos2Y, 50, 50);
+	  BSP_LCD_SetTextColor(LCD_COLOR_RED);
 	  BSP_LCD_FillRect(posX, posY, 50, 50);
 	  start = HAL_GetTick();
 	  while (match == 0)
