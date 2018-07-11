@@ -1,12 +1,10 @@
-
 #include "main.h"
 #include <string.h>
+#define TC74ADDRESS (0b1001000<<1)
 
 UART_HandleTypeDef uart_handle;
 GPIO_InitTypeDef GPIOBConfig;
 I2C_HandleTypeDef I2cHandle;
-
-
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -62,20 +60,29 @@ int main(void) {
 	uart_handle.Init.Mode = UART_MODE_TX_RX;
 	BSP_COM_Init(COM1, &uart_handle);
 
-
 	__HAL_RCC_GPIOB_CLK_ENABLE();
 	GPIOBConfig.Pin = GPIO_PIN_8 | GPIO_PIN_9;
 	GPIOBConfig.Pull = GPIO_PULLUP;
 	GPIOBConfig.Mode = GPIO_MODE_AF_OD;
 	GPIOBConfig.Alternate = GPIO_AF4_I2C1;
 	GPIOBConfig.Speed = GPIO_SPEED_FAST;
+	HAL_GPIO_Init(GPIOB, &GPIOBConfig);
 
+	__HAL_RCC_I2C1_CLK_ENABLE();
+	I2cHandle.Instance = I2C1;
+	I2cHandle.Init.Timing = 0x40912732;
+	I2cHandle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+	HAL_I2C_Init(&I2cHandle);
 
-
+	uint8_t reg = 0;
+	uint8_t data;
 
 	while (1)
 	{
-
+		HAL_I2C_Master_Transmit(&I2cHandle, (uint16_t)TC74ADDRESS, &reg, 1, 1000);
+		HAL_I2C_Master_Receive(&I2cHandle, (uint16_t)TC74ADDRESS, &data, 1, 1000);
+		printf("Temperature: %d °C\r\n", data);
+		HAL_Delay(1000);
 	}
 }
 
