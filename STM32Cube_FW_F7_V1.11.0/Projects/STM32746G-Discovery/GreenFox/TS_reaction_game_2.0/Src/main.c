@@ -16,6 +16,8 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef uart_handle;
+RNG_HandleTypeDef random;
+TS_StateTypeDef ts_state;
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -41,37 +43,18 @@ static void CPU_CACHE_Enable(void);
   */
 int main(void)
 {
-  /* This project template calls firstly two functions in order to configure MPU feature 
-     and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable().
-     These functions are provided as template implementation that User may integrate 
-     in his application, to enhance the performance in case of use of AXI interface 
-     with several masters. */ 
-  
   /* Configure the MPU attributes as Write Through */
   MPU_Config();
 
   /* Enable the CPU Cache */
   CPU_CACHE_Enable();
-
-  /* STM32F7xx HAL library initialization:
-       - Configure the Flash ART accelerator on ITCM interface
-       - Configure the Systick to generate an interrupt each 1 msec
-       - Set NVIC Group Priority to 4
-       - Low Level Initialization
-     */
   HAL_Init();
 
   /* Configure the System clock to have a frequency of 216 MHz */
   SystemClock_Config();
 
-
   /* Add your application code here
      */
-  __HAL_RCC_RNG_CLK_ENABLE();
-  RNG_HandleTypeDef random;
-  TS_StateTypeDef ts_state;
-
-  BSP_LED_Init(LED_GREEN);
   BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
   BSP_LCD_Init();
 
@@ -81,16 +64,11 @@ int main(void)
   uart_handle.Init.Parity     = UART_PARITY_NONE;
   uart_handle.Init.HwFlowCtl  = UART_HWCONTROL_NONE;
   uart_handle.Init.Mode       = UART_MODE_TX_RX;
-
-  random.Instance = RNG;
-
-  HAL_RNG_Init(&random);
-
   BSP_COM_Init(COM1, &uart_handle);
 
-  /* Output a message using printf function */
-  printf("\n***************Welcome in the reaction game!***************\r\n\n");
-  printf("Let's play a game! Are you ready???\r\n");
+  __HAL_RCC_RNG_CLK_ENABLE();
+  random.Instance = RNG;
+  HAL_RNG_Init(&random);
 
   BSP_LCD_LayerDefaultInit(1, LCD_FB_START_ADDRESS);
   BSP_LCD_SelectLayer(1);
