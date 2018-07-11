@@ -19,7 +19,10 @@ UART_HandleTypeDef uart_handle;
 RNG_HandleTypeDef random;
 TS_StateTypeDef ts_state;
 
+uint32_t posX, posY;
+
 /* Private function prototypes -----------------------------------------------*/
+void draw_reactangle();
 
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -36,11 +39,7 @@ static void CPU_CACHE_Enable(void);
 
 /* Private functions ---------------------------------------------------------*/
 
-/**
-  * @brief  Main program
-  * @param  None
-  * @retval None
-  */
+
 int main(void)
 {
   /* Configure the MPU attributes as Write Through */
@@ -78,7 +77,7 @@ int main(void)
   BSP_LCD_Clear(LCD_COLOR_WHITE);
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
-  uint32_t posX, posY, pos2X, pos2Y;
+  //uint32_t posX, posY, pos2X, pos2Y;
   int game = 0;
   uint32_t start;
   uint32_t stop;
@@ -111,23 +110,18 @@ int main(void)
   {
 	  uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 3;
 	  int match = 0;
-	  do{
-		  posX = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
-	  }while(posX > 430);
-	  do{
-		  posY = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
-	  }while(posY > 222);
-	  do{
-	  		  pos2X = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
-	  	  }while(pos2X > 430);
-	  	  do{
-	  		  pos2Y = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
-	  	  }while(pos2Y > 222);
+
+//	  do{
+//		  posX = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
+//	  }while(posX > 430);
+//	  do{
+//		  posY = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
+//	  }while(posY > 222);
+
 	  HAL_Delay(timer);
-	  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
-	  BSP_LCD_FillRect(pos2X, pos2Y, 50, 50);
-	  BSP_LCD_SetTextColor(LCD_COLOR_RED);
-	  BSP_LCD_FillRect(posX, posY, 50, 50);
+	  draw_reactangle();
+//	  BSP_LCD_SetTextColor(LCD_COLOR_RED);
+//	  BSP_LCD_FillRect(posX, posY, 50, 50);
 	  start = HAL_GetTick();
 	  while (match == 0)
 	  {
@@ -158,11 +152,19 @@ int main(void)
   BSP_LCD_DisplayStringAt(0, 135, text, CENTER_MODE);
 }
 
-/**
-  * @brief  Retargets the C library printf function to the USART.
-  * @param  None
-  * @retval None
-  */
+void draw_reactangle()
+{
+	do {
+		posX = (HAL_RNG_GetRandomNumber(&random) % 11000) / 20;
+	} while (posX > 430);
+	do {
+		posY = (HAL_RNG_GetRandomNumber(&random) % 11000) / 40;
+	} while (posY > 222);
+	BSP_LCD_SetTextColor(LCD_COLOR_RED);
+	BSP_LCD_FillRect(posX, posY, 50, 50);
+}
+
+
 PUTCHAR_PROTOTYPE
 {
   /* Place your implementation of fputc here */
