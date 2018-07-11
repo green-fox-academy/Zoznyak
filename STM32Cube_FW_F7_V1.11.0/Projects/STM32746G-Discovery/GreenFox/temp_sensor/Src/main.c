@@ -27,24 +27,8 @@ uint8_t reg = 0;
 uint8_t data;
 
 int main(void) {
-	/* This project template calls firstly two functions in order to configure MPU feature
-	 and to enable the CPU Cache, respectively MPU_Config() and CPU_CACHE_Enable().
-	 These functions are provided as template implementation that User may integrate
-	 in his application, to enhance the performance in case of use of AXI interface
-	 with several masters. */
-
-	/* Configure the MPU attributes as Write Through */
 	MPU_Config();
-
-	/* Enable the CPU Cache */
 	CPU_CACHE_Enable();
-
-	/* STM32F7xx HAL library initialization:
-	 - Configure the Flash ART accelerator on ITCM interface
-	 - Configure the Systick to generate an interrupt each 1 msec
-	 - Set NVIC Group Priority to 4
-	 - Low Level Initialization
-	 */
 	HAL_Init();
 
 	/* Configure the System clock to have a frequency of 216 MHz */
@@ -111,11 +95,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 }
 
-/**
- * @brief  Retargets the C library printf function to the USART.
- * @param  None
- * @retval None
- */
 PUTCHAR_PROTOTYPE {
 	/* Place your implementation of fputc here */
 	/* e.g. write a character to the EVAL_COM1 and Loop until the end of transmission */
@@ -124,26 +103,6 @@ PUTCHAR_PROTOTYPE {
 	return ch;
 }
 
-/**
- * @brief  System Clock Configuration
- *         The system Clock is configured as follow :
- *            System Clock source            = PLL (HSE)
- *            SYSCLK(Hz)                     = 216000000
- *            HCLK(Hz)                       = 216000000
- *            AHB Prescaler                  = 1
- *            APB1 Prescaler                 = 4
- *            APB2 Prescaler                 = 2
- *            HSE Frequency(Hz)              = 25000000
- *            PLL_M                          = 25
- *            PLL_N                          = 432
- *            PLL_P                          = 2
- *            PLL_Q                          = 9
- *            VDD(V)                         = 3.3
- *            Main regulator output voltage  = Scale1 mode
- *            Flash Latency(WS)              = 7
- * @param  None
- * @retval None
- */
 static void SystemClock_Config(void) {
 	RCC_ClkInitTypeDef RCC_ClkInitStruct;
 	RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -256,13 +215,3 @@ void assert_failed(uint8_t* file, uint32_t line)
 	}
 }
 #endif
-
-/**
- * @}
- */
-
-/**
- * @}
- */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
