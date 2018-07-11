@@ -152,6 +152,7 @@ int main(void)
 			sum += result;
 		}
 		print_avg_time(sum);
+		HAL_Delay(500);
 		draw_restart();
 		while (restart == 0){
 			BSP_TS_GetState(&ts_state);
