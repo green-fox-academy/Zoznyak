@@ -216,11 +216,17 @@ void USART1_IRQHandler(void)
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-
 	if (!strcmp(command,"aa")){
 		BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
 		BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 		BSP_LCD_DisplayStringAt(0, 115, "LASSU VAGY!", CENTER_MODE);
+	}
+	else if (!strcmp(command,"bb")){
+		BSP_LCD_SetTextColor(LCD_COLOR_RED);
+		BSP_LCD_FillRect(240, 150, 50, 50);
+	}
+	else if (!strcmp(command,"cc")){
+		draw_reactangle();
 	}
 	HAL_UART_Receive_IT(&uart_handle, command, 2);
 }
