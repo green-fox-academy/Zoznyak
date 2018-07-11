@@ -24,6 +24,8 @@ uint32_t posX, posY;
 /* Private function prototypes -----------------------------------------------*/
 void draw_reactangle();
 void draw_start_button();
+void draw_restart();
+void print_avg_time(int sum);
 
 #ifdef __GNUC__
 /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -80,15 +82,14 @@ int main(void)
 
 
   int game = 0;
+  int go = 0;
+  int restart = 1;
   uint32_t start;
   uint32_t stop;
   uint32_t result;
   uint32_t sum = 0;
 
-  int go = 0;
-
   draw_start_button();
-
   while (go == 0)
   {
 	  BSP_TS_GetState(&ts_state);
@@ -102,39 +103,53 @@ int main(void)
   		  }
 	  }
   }
-  BSP_LCD_SetTextColor(LCD_COLOR_RED);
-
-  while (game != 5)
+  //BSP_LCD_SetTextColor(LCD_COLOR_RED);
+  while (restart ==1)
   {
-	  uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 3;
-	  int match = 0;
-	  HAL_Delay(timer);
-	  draw_reactangle();
-	  start = HAL_GetTick();
-	  while (match == 0)
-	  {
-		  BSP_TS_GetState(&ts_state);
-		  if (ts_state.touchDetected) {
-			  int x,y;
-			  x = ts_state.touchX[0];
-			  y = ts_state.touchY[0];
-			  if(x > posX && x < posX + 50 && y > posY && y < posY + 50){
-				  stop = HAL_GetTick();
-				  result = stop - start;
-				  printf("%d\r\n", result);
-				  match = 1;
-				  BSP_LCD_Clear(LCD_COLOR_WHITE);
-				  game++;
-			  }
-		  }
-	  }
-	  sum += result;
-	  printf("%d\r\n", sum);
-  }
-
-  print_avg_time(sum);
-
-
+	  BSP_LCD_SetTextColor(LCD_COLOR_RED);
+	  restart = 0;
+	  while (game != 5) {
+			uint32_t timer = (HAL_RNG_GetRandomNumber(&random) % 11000) / 3;
+			int match = 0;
+			HAL_Delay(timer);
+			draw_reactangle();
+			start = HAL_GetTick();
+			while (match == 0) {
+				BSP_TS_GetState(&ts_state);
+				if (ts_state.touchDetected) {
+					int x, y;
+					x = ts_state.touchX[0];
+					y = ts_state.touchY[0];
+					if (x > posX && x < posX + 50 && y > posY
+							&& y < posY + 50) {
+						stop = HAL_GetTick();
+						result = stop - start;
+						printf("%d\r\n", result);
+						match = 1;
+						BSP_LCD_Clear(LCD_COLOR_WHITE);
+						game++;
+					}
+				}
+			}
+			sum += result;
+		}
+		print_avg_time(sum);
+		draw_restart();
+		while (restart == 0){
+			BSP_TS_GetState(&ts_state);
+			if (ts_state.touchDetected) {
+				int x, y;
+				x = ts_state.touchX[0];
+				y = ts_state.touchY[0];
+				if (x < 180 && y > 222) {
+					restart = 1;
+					game = 0;
+					sum = 0;
+					BSP_LCD_Clear(LCD_COLOR_WHITE);
+				}
+			}
+		}
+	}
 }
 
 void draw_reactangle()
@@ -154,6 +169,14 @@ void draw_start_button() {
 	BSP_LCD_FillRect(150, 100, 180, 72);
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayStringAt(0, 125, "START", CENTER_MODE);
+}
+
+void draw_restart() {
+	BSP_LCD_SetBackColor(LCD_COLOR_RED);
+	BSP_LCD_SetTextColor(LCD_COLOR_RED);
+	BSP_LCD_FillRect(0, 222, 180, 50);
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+	BSP_LCD_DisplayStringAt(25, 240, "RESTART", LEFT_MODE);
 }
 
 void print_avg_time(int sum) {
@@ -177,26 +200,6 @@ PUTCHAR_PROTOTYPE
   return ch;
 }
 
-/**
-  * @brief  System Clock Configuration
-  *         The system Clock is configured as follow : 
-  *            System Clock source            = PLL (HSE)
-  *            SYSCLK(Hz)                     = 216000000
-  *            HCLK(Hz)                       = 216000000
-  *            AHB Prescaler                  = 1
-  *            APB1 Prescaler                 = 4
-  *            APB2 Prescaler                 = 2
-  *            HSE Frequency(Hz)              = 25000000
-  *            PLL_M                          = 25
-  *            PLL_N                          = 432
-  *            PLL_P                          = 2
-  *            PLL_Q                          = 9
-  *            VDD(V)                         = 3.3
-  *            Main regulator output voltage  = Scale1 mode
-  *            Flash Latency(WS)              = 7
-  * @param  None
-  * @retval None
-  */
 
 static void SystemClock_Config(void)
 {
