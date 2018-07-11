@@ -18,8 +18,10 @@
 UART_HandleTypeDef uart_handle;
 RNG_HandleTypeDef random;
 TS_StateTypeDef ts_state;
+TIM_HandleTypeDef tim2_handle;
 
 uint32_t posX, posY;
+char command[2] = {};
 
 /* Private function prototypes -----------------------------------------------*/
 void draw_reactangle();
@@ -60,6 +62,8 @@ int main(void)
   BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
   BSP_LCD_Init();
 
+  __HAL_RCC_USART1_CLK_ENABLE();
+  uart_handle.Instance = USART1;
   uart_handle.Init.BaudRate   = 115200;
   uart_handle.Init.WordLength = UART_WORDLENGTH_8B;
   uart_handle.Init.StopBits   = UART_STOPBITS_1;
@@ -80,6 +84,19 @@ int main(void)
   BSP_LCD_Clear(LCD_COLOR_WHITE);
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 
+  __HAL_RCC_TIM2_CLK_ENABLE();
+  tim2_handle.Instance = TIM2;
+  tim2_handle.Init.Period = 60000;
+  tim2_handle.Init.Prescaler = 10800;
+  tim2_handle.Init.CounterMode = TIM_COUNTERMODE_UP;
+  HAL_TIM_Base_Init(&tim2_handle);
+
+//  HAL_NVIC_SetPriority(TIM2_IRQn, 0, 1);
+//  HAL_NVIC_EnableIRQ(TIM2_IRQn);
+//  HAL_TIM_Base_Start_IT(&tim2_handle);
+
+  HAL_NVIC_SetPriority(USART1_IRQn, 0, 1);
+  HAL_NVIC_EnableIRQ(USART1_IRQn);
 
   int game = 0;
   int go = 0;
@@ -88,6 +105,8 @@ int main(void)
   uint32_t stop;
   uint32_t result;
   uint32_t sum = 0;
+
+  HAL_UART_Receive_IT(&uart_handle, command, 2);
 
   draw_start_button();
   while (go == 0)
@@ -103,7 +122,6 @@ int main(void)
   		  }
 	  }
   }
-  //BSP_LCD_SetTextColor(LCD_COLOR_RED);
   while (restart ==1)
   {
 	  BSP_LCD_SetTextColor(LCD_COLOR_RED);
@@ -188,6 +206,22 @@ void print_avg_time(int sum) {
 	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_DisplayStringAt(0, 115, "Average reaction time:", CENTER_MODE);
 	BSP_LCD_DisplayStringAt(0, 135, text, CENTER_MODE);
+}
+
+void USART1_IRQHandler(void)
+{
+	HAL_UART_IRQHandler(&uart_handle);
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+
+	if (!strcmp(command,"aa")){
+		BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+		BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+		BSP_LCD_DisplayStringAt(0, 115, "LASSU VAGY!", CENTER_MODE);
+	}
+	HAL_UART_Receive_IT(&uart_handle, command, 2);
 }
 
 
