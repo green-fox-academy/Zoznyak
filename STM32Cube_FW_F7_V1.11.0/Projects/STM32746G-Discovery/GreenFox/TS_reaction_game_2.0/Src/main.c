@@ -221,10 +221,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 		BSP_LCD_DisplayStringAt(0, 115, "LASSU VAGY!", CENTER_MODE);
 	}
-	else if (!strcmp(command,"bb")){
-		BSP_LCD_SetTextColor(LCD_COLOR_RED);
-		BSP_LCD_FillRect(240, 150, 50, 50);
-	}
 	else if (!strcmp(command,"cc")){
 		draw_reactangle();
 	}
