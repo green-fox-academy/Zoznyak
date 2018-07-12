@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1531390227 source:d:\greenfox\zoznyak\week-09\day-5\vowel\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
