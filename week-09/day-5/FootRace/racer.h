@@ -1,15 +1,16 @@
 #ifndef RACER_H_INCLUDED
 #define RACER_H_INCLUDED
 
-enum country{
+typedef enum{
     HUN,
     GER,
+    FRA,
     ENG
-};
+}nationality;
 
 typedef struct{
-    char name[30];
-    enum country;
+    char *name[20];
+    nationality country;
     int result;
 }racer;
 
