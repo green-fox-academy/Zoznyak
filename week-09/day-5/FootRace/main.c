@@ -4,6 +4,7 @@
 #include "racer.h"
 
 char* get_fastest(racer *racers, int length);
+int get_same_country(racer *racer, int length, nationality country);
 
 int main()
 {
@@ -31,11 +32,7 @@ int main()
     fill_up_racers(racers, samu);
 
     printf("The fastest driver is: %s\n", get_fastest(racers, length));
-
-    printf("%d.: %s\n", racers[0].result, racers[0].name);
-    printf("%d.: %s\n", racers[1].result, racers[1].name);
-    printf("%d.: %s\n", racers[2].result, racers[2].name);
-    printf("%d.: %s\n", racers[3].result, racers[3].name);
+    printf("Competitors from the same country: %d\n", get_same_country(racers, length, ENG));
     return 0;
 }
 
@@ -71,13 +68,27 @@ void fill_up_racers(racer *racers,racer competitor)
 char* get_fastest(racer *racers, int length)
 {
     int i;
-    char *fastest = (char*)malloc(20*sizeof(char));
+    //char *fastest = (char*)malloc(20*sizeof(char));
+    char *fastest;
     for(i = 0; i < length; i++){
         if(racers[i].result == 1){
-            strcpy(fastest, racers[i].name);
+            //strcpy(fastest, racers[i].name);
+            fastest = racers[i].name;
         }
     }
     return fastest;
+}
+
+int get_same_country(racer *racer, int length, nationality country)
+{
+    int i;
+    int number = 0;
+    for(i = 0; i < length; i++){
+        if(racer[i].country == country){
+            number++;
+        }
+    }
+    return number;
 }
 
 
