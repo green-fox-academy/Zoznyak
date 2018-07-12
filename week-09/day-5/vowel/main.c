@@ -5,6 +5,7 @@
 
 int read_file();
 int count_vowels(char textline[], int length);
+int write_file(char letter);
 
 int main()
 {
@@ -25,6 +26,19 @@ int read_file()
     fclose(fp);
 }
 
+int write_file(char letter)
+{
+    FILE *fp;
+    fp = fopen("just_some_vowels.txt", "a");
+    if(fp == NULL) {
+        perror("Error opening file.");
+    }
+    else{
+        fprintf(fp, "%c", letter);
+        }
+    fclose(fp);
+}
+
 int count_vowels(char textline[], int length)
 {
     int i;
@@ -35,6 +49,7 @@ int count_vowels(char textline[], int length)
         for(j = 0; j < 5; j++){
             if(textline[i] == vowels[j]){
                  counter++;
+                 write_file(textline[i]);
             }
         }
     }
