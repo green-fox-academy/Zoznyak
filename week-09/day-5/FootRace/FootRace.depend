@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1531401440 source:d:\greenfox\zoznyak\week-09\day-5\footrace\main.c
+1531410584 source:d:\greenfox\zoznyak\week-09\day-5\footrace\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"racer.h"
 
-1531392424 d:\greenfox\zoznyak\week-09\day-5\footrace\racer.h
+1531409371 d:\greenfox\zoznyak\week-09\day-5\footrace\racer.h
 
 1531390966 source:d:\greenfox\zoznyak\week-09\day-5\footrace\racer.c
 	"racer.h"

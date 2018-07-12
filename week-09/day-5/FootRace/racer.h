@@ -9,7 +9,7 @@ typedef enum{
 }nationality;
 
 typedef struct{
-    char *name[20];
+    char name[20];
     nationality country;
     int result;
 }racer;
