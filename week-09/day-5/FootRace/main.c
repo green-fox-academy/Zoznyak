@@ -32,7 +32,7 @@ int main()
     fill_up_racers(racers, samu);
 
     printf("The fastest driver is: %s\n", get_fastest(racers, length));
-    printf("Competitors from the same country: %d\n", get_same_country(racers, length, ENG));
+    printf("Competitors from the same country: %d\n", get_same_country(racers, length, GER));
     return 0;
 }
 
