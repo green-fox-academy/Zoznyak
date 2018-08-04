@@ -29,6 +29,8 @@ static void CPU_CACHE_Enable(void);
 int rescale(uint32_t adc_value, int scale_value);
 void write_info(int scale_value);
 void set_pulse(int scale_value);
+void create_display(int number_of_rect);
+void visualization(int scale_value);
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -58,8 +60,6 @@ int main(void) {
 	BSP_LCD_LayerDefaultInit(1, LCD_FB_START_ADDRESS);
 	BSP_LCD_SelectLayer(1);
 	BSP_LCD_SetFont(&LCD_DEFAULT_FONT);
-	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
-	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 	BSP_LCD_Clear(LCD_COLOR_WHITE);
 
 	__HAL_RCC_USART1_CLK_ENABLE();
@@ -117,14 +117,14 @@ int main(void) {
 	uint32_t adc_value = 0;
 	int scale_value = 0;
 
+	create_display(20);
+
 	while (1)
 	{
 		HAL_ADC_Start(&adc_handle);
 		adc_value = HAL_ADC_GetValue(&adc_handle);
-		//printf("ADC value: %d\r\n", adc_value);
-		//rescale(adc_value, scale_value);
 		set_pulse(rescale(adc_value, scale_value));
-		HAL_Delay(100);
+		HAL_Delay(50);
 	}
 }
 
@@ -132,6 +132,7 @@ int rescale(uint32_t adc_value, int scale_value)
 {
 	scale_value = (100 - 0) / (4095.0 - 0) * (adc_value - 0) + 0;
 	write_info(scale_value);
+	visualization(scale_value);
 	return scale_value;
 }
 
@@ -139,7 +140,8 @@ void write_info(int scale_value)
 {
 	uint8_t text[30];
 	BSP_LCD_Clear(LCD_COLOR_WHITE);
-	sprintf(text, "Actual birghtness: %d %%", scale_value);
+	create_display(20);
+	sprintf(text, "Actual brightness: %d %%", scale_value);
 	BSP_LCD_DisplayStringAt(10, 20, text, LEFT_MODE);
 }
 
@@ -149,6 +151,39 @@ void set_pulse(int scale_value)
 	HAL_TIM_PWM_ConfigChannel(&tim2_handle, &sConfig, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&tim2_handle, TIM_CHANNEL_1);
 	HAL_Delay(10);
+}
+
+void create_display(int number_of_rect)
+{
+	int i;
+	int x = 40;
+	for(i = 0; i < number_of_rect; i++) {
+		BSP_LCD_SetBackColor(LCD_COLOR_BLACK);
+		BSP_LCD_DrawRect(x, 110, 15, 60);
+		x += 20;
+	}
+	BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
+}
+
+void visualization(int scale_value)
+{
+	int number_of_rect = scale_value / 5;
+	int i;
+	int x = 40;
+	for(i = 0; i < number_of_rect; i++) {
+		if (i < 7){
+			BSP_LCD_SetTextColor(LCD_COLOR_YELLOW);
+		}
+		if (i > 6 && i < 13){
+			BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
+		}
+		if (i > 12){
+			BSP_LCD_SetTextColor(LCD_COLOR_RED);
+		}
+		BSP_LCD_FillRect(x, 110, 15, 60);
+		x += 20;
+	}
+	BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 }
 
 
